@@ -1,0 +1,58 @@
+.head
+{
+    background-color: rgb(61, 130, 233);
+    border: 5px;
+    border-style:solid;
+    border-color: rgb(162, 185, 219);
+    font-size: 3cm;
+    text-align: center;
+    text-shadow: rgb(33, 40, 65);
+}
+table
+{    
+    width: 35%;
+    margin: auto;
+    border-style: double;
+    margin-top: 10%;
+    background-color: rgb(88, 170, 218);
+    border-color: black;
+    size: 30px;
+}
+
+.thead
+{
+    
+    text-align:center;
+    font-size:1cm;
+    
+}
+
+.tdattr
+{
+    font-size: 0.5cm;
+    text-align: right;
+}
+.Buttons
+{
+    text-align: center;
+}
+button {   
+    background-color: #2e71be;   
+   
+     color: orange;   
+     padding: 15px;   
+     margin: 10px 0px;   
+     border: none;   
+     cursor: pointer;   
+      }   
+button:hover {   
+    opacity: 0.7;   
+}   
+.redirect{
+   column-span: 2;
+    text-align: center;
+   
+}
+.body{
+    background-image: "C:\Users\kazia\Desktop\Scrap trading System\Images\scrap-metal-art-brian-mock-6.jpg";
+}
