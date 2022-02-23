@@ -1,9 +1,12 @@
 package com.app.pojos;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -13,27 +16,35 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.ManyToAny;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 //+----------------+--------------+------+-----+---------+-------+
 //| Field          | Type         | Null | Key | Default | Extra |
 //+----------------+--------------+------+-----+---------+-------+
 //| scrap_id       | int          | NO   | PRI | NULL    |       |
-//| user_id        | int          | YES  | MUL | NULL    |       |
-//| weight         | decimal(2,0) | YES  |     | NULL    |       |
-//| material_type  | varchar(45)  | YES  |     | NULL    |       |
-//| uploading_date | date         | YES  |     | NULL    |       |
+//| user_id        | int          | NO   | MUL | NULL    |       |
+//| weight         | decimal(2,0) | NO   |     | NULL    |       |
+//| material_type  | varchar(45)  | NO   |     | NULL    |       |
+//| uploading_date | date         | NO   |     | NULL    |       |
+//| scrap_image    | varchar(100) | NO   |     | NULL    |       |
 //+----------------+--------------+------+-----+---------+-------+
 
 
 
 @Entity
 @Table(name = "scrap_post")
-public class ScrapPost extends BaseEntity{
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class ScrapPost extends _ScrapPostId{
 
 	
 	@NotEmpty()
-	@OneToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id",nullable = false)
+	private User user_id;
 	
 	@Column
 	@NotEmpty(message = "Weight can't be empty")
@@ -41,11 +52,16 @@ public class ScrapPost extends BaseEntity{
 	
 	@Column
 	@NotEmpty(message = "material_type can't be empty")
+	//private String material_type;
 	private String material_type;
 	
 	@Column
 	@NotEmpty()
 	private Date uploading_date;
 	
-	//maybe bid id forengmn key to add later idk not sure
+	
+	@OneToMany(mappedBy = "scrap_id")
+	//@JoinColumn(name ="bid_id",nullable = false)
+	//private BidDetails bid;
+	private List<BidDetails> bid_id = new ArrayList<>();
 }

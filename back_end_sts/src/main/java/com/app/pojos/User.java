@@ -1,9 +1,14 @@
 package com.app.pojos;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -32,7 +37,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class User extends BaseEntity{
+public class User extends _UserId{
 
 	@NotEmpty (message = "Full Name can't be Empty!!!")
 	@Length(min = 5,max = 40, message = "Invalid Name Lenght" )
@@ -53,12 +58,18 @@ public class User extends BaseEntity{
 	@Column
 	private String address;
 	
-	@OneToMany
-	@JoinColumn(name = "scrap_id")
-	private ScrapPost scrap;
+	@OneToMany(mappedBy = "user_id",cascade = CascadeType.ALL)
+	//@JoinColumn(name = "scrap_id")
+	//private ScrapPost scrap;
+	private List<ScrapPost> scrap_id =new ArrayList<>();
 	
-	@OneToMany
-	@JoinColumn(name ="bid_id")
-	private BidDetails bid;
-
+	@OneToMany(mappedBy = "user_id" )
+	//@JoinColumn(name ="bid_id")
+	//private BidDetails bid;
+	private List<BidDetails> bid_id = new ArrayList<>();
+	
+	
+	@OneToOne				//(mappedBy = "user" )
+	@JoinColumn(name ="login_id")
+	private Login login_id;
 }

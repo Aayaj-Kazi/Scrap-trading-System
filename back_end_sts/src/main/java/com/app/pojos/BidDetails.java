@@ -5,6 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Length;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 
 //+----------+--------------+------+-----+---------+-------+
@@ -18,15 +24,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "bid_details")
-public class BidDetails extends BaseEntity {
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class BidDetails extends _BidId {
 
 	@Column
 	@JoinColumn(name = "scrap_id", nullable = false)
-	private ScrapPost scrap;
+	private ScrapPost scrap_id;
 	
 	@Column
 	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+	private User user_id;
 	
 	@Column
 	private Double bid_amt;
