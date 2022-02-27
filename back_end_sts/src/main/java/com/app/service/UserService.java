@@ -8,10 +8,10 @@ import com.app.pojos.ScrapPost;
 public interface UserService {
 
 	//to get all scrappost
-	 List<ScrapPost> getallScrappost();
+	 List<ScrapPost> getAllScrappost();
 	 
 	 //to delete post 
-	 void deletepost(Integer Id);
+	 String deletePost(Integer Id);
 	 
 	 
 }

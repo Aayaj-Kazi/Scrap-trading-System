@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -37,20 +38,26 @@ public class User extends BaseEntity{
 	@Column(length = 45)
 	private String fullname;
 	
-	@Column(length = 45)
+	@Column(length = 45,unique = true)
 	private String email;
 	
-	@Column(nullable = false)
-	private Integer contact;
+	@Column(nullable = false,length = 10,unique = true)
+	private String contactNo;
 	
 	@Column(length = 45)
 	private String address;
 	
-		
-	@OneToOne(cascade = CascadeType.ALL)     // to add login_id as foreign key in this table
-	@JoinColumn(name = "loginId")
-	private Login login;
+	@Column(length =40 )
+	private String username;
 	
+	@Column(length =40 )
+	private String password;
+	
+		
+//	@OneToOne(cascade = CascadeType.ALL)     // to add login_id as foreign key in this table
+//	@JoinColumn(name = "loginId")
+//	private Login login;
+
 	@OneToMany(mappedBy = "user")
 	private List<ScrapPost> scrappost;
 	

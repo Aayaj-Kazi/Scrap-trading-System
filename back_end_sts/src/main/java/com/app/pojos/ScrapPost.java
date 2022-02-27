@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,10 +25,9 @@ import lombok.NoArgsConstructor;
 //| material_type  | varchar(45)  | NO   |     | NULL    |       |
 //| uploading_date | date         | NO   |     | NULL    |       |
 //| scrap_image    | varchar(100) | NO   |     | NULL    |       |
-//| bid_id         | int          | NO   | MUL | NULL    |       |
+//| no-bid_id         | int          | NO   | MUL | NULL    |       |
 //+----------------+--------------+------+-----+---------+-------+
 //city
-
 @Entity
 @Table(name = "scrap_post")
 @NoArgsConstructor
@@ -35,8 +35,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class ScrapPost extends BaseEntity{
 
-	@ManyToOne()
-	@JoinColumn(name = "user_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id",nullable = false)
 	private User user;
 	
 	@Column(nullable = false,length = 20)
@@ -57,8 +57,8 @@ public class ScrapPost extends BaseEntity{
 	@OneToMany(mappedBy = "scrappost")
 	private List<BidDetails> bidDetails;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "bid_id")
-	private BidDetails bidDetails1;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "bid_id",nullable = false)
+//	private BidDetails bidDetails1;
 
 }

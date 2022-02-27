@@ -1,0 +1,2 @@
+TO INSERT USERS:
+insert into user (address,contact_no,email,fullname,password,username) values('Raipur,Chhattisgharh','6260509982','96haneef@gmail.com','Mohd Haneef','123','haneef');

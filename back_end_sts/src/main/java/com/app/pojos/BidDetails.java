@@ -33,16 +33,18 @@ import lombok.NoArgsConstructor;
 public class BidDetails extends BaseEntity{
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "scrap_id")
+	@JoinColumn(name = "scrap_id",nullable = false)
 	private ScrapPost scrappost;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id",nullable = false)
 	private User user;
 
-	@OneToMany(mappedBy = "bidDetails1")
-	private List<ScrapPost> Scrappost1;
-	
 	@Column
 	private Double bidAmt;
+	
+//	@OneToMany(mappedBy = "bidDetails1")
+//	private List<ScrapPost> Scrappost1;
+	
+
 }
