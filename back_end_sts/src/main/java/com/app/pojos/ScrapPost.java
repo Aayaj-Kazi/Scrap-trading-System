@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +30,8 @@ import lombok.NoArgsConstructor;
 //| no-bid_id         | int          | NO   | MUL | NULL    |       |
 //+----------------+--------------+------+-----+---------+-------+
 //city
+
+
 @Entity
 @Table(name = "scrap_post")
 @NoArgsConstructor
@@ -35,6 +39,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ScrapPost extends BaseEntity{
 
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id",nullable = false)
 	private User user;
@@ -54,6 +59,7 @@ public class ScrapPost extends BaseEntity{
 	@Column(nullable = false)
 	private String scrapImage;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "scrappost")
 	private List<BidDetails> bidDetails;
 	

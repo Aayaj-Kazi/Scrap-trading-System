@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -58,12 +60,15 @@ public class User extends BaseEntity{
 //	@JoinColumn(name = "loginId")
 //	private Login login;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<ScrapPost> scrappost;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Feedback> feedback;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Report> report;
 }
