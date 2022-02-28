@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.dao.FeedbackRepository;
+import com.app.dao.ReportRepository;
 import com.app.dao.ScrapRepository;
 import com.app.dao.UserRepository;
+import com.app.pojos.Feedback;
+import com.app.pojos.Report;
 import com.app.pojos.ScrapPost;
 import com.app.pojos.User;
 
@@ -20,6 +24,13 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private FeedbackRepository feedrepo;
+	
+	@Autowired
+	private ReportRepository reportrepo;
+	
 	
 	@Override
 	public List<ScrapPost> getAllScrappost() {
@@ -43,6 +54,16 @@ public class AdminServiceImpl implements AdminService {
 	public String deletePost(Integer Id) {
 		scrapRepo.deleteById(Id);
 		return "ScrapPost of ID "+Id +"Deleted Succesfully" ;   //delete any scrap post with given id
+	}
+
+	@Override
+	public List<Feedback> getAllFeedback() {
+		return feedrepo.findAll();
+	}
+
+	@Override
+	public List<Report> getAllReport() {
+		return reportrepo.findAll();
 	}
 
 }

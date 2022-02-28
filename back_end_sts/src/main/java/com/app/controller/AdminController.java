@@ -37,6 +37,18 @@ public class AdminController {
 		return new ResponseEntity<> (adminService.getAllScrappost(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/getAllFeedback")
+	public ResponseEntity<?>  getAllFeedback(){
+		System.out.println("In getAllFeedback()");
+		return new ResponseEntity<> (adminService.getAllFeedback(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/getAllReport")
+	public ResponseEntity<?>  getAllReport(){
+		System.out.println("In getAllReport()");
+		return new ResponseEntity<> (adminService.getAllReport(), HttpStatus.OK);
+	}
+	
 	@DeleteMapping("/deleteUser/{user_id}")
 	public String deleteUserDetails(@PathVariable int user_id) {
 		System.out.println("In deleteUserDetails()");
