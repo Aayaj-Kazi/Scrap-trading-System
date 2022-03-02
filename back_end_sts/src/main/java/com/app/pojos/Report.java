@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Report extends BaseEntity {
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE )
 	@JoinColumn(name = "user_id",nullable = false)
 	private User user; // to add user_id as foreign key (one user -> many feedback)
 

@@ -23,6 +23,8 @@ public interface ScrapRepository extends JpaRepository<ScrapPost, Integer> {
 		//find all scrapost by location/city
 		List<ScrapPost> findByCity(String city);
 		
+		
+		
 		//		//Sort all scrap from specific dept as per salary
 //		List<ScrapPost> findByDeptOrderBySalary(String deptId);
 

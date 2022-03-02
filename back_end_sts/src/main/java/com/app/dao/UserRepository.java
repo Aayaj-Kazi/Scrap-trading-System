@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.app.pojos.BidDetails;
 import com.app.pojos.User;
 
 
@@ -18,6 +19,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	List<User> findByFullname(String fullname);
 	
 	User findByUsername(String username);
+
+	
 	
 	
 }
