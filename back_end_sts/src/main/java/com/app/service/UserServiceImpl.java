@@ -11,7 +11,9 @@ import com.app.dao.FeedbackRepository;
 import com.app.dao.ReportRepository;
 import com.app.dao.ScrapRepository;
 import com.app.dao.UserRepository;
+import com.app.dto.LoginResponse;
 import com.app.pojos.BidDetails;
+//import com.app.pojos.Customer;
 import com.app.pojos.Feedback;
 import com.app.pojos.Report;
 import com.app.pojos.ScrapPost;
@@ -89,6 +91,18 @@ public class UserServiceImpl implements UserService {
 	public Report sendreport(Report report) {
 		return reportRepo.save(report);
 	}
+//	@Override
+//	public LoginResponse authenticateCustomer(String customerId, String pwd) {
+//		Customer customer = custRepo.findByCustomerIdAndPassword(customerId, pwd)
+//				.orElseThrow(() -> new RuntimeException("Auth Failed"));
+//		return new LoginResponse(customer.getName(),
+//				acctRepo.findByAcctOwnerCustomerId(customer.getCustomerId()));
+
+//	@Override
+//	public LoginResponse authenticateUser(String username, String password) {
+//		User user=userRepo.findByUsernameAndPassword(username, password).orElseThrow(() -> new RuntimeException("Auth Failed"));
+//		return new LoginResponse(user.getFullname(), scrapRepo.findByUserId(user.getId()));
+//	}
 
 	
 

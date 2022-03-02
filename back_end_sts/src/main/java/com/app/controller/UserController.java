@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.LoginRequest;
 import com.app.pojos.BidDetails;
 import com.app.pojos.Feedback;
 import com.app.pojos.Report;
@@ -72,5 +73,16 @@ public class UserController {
 		return userservice.deletePost(scrap_id);
 	}
 	
+//	@PostMapping("/signin")
+//	public /* @ResponseBody */ ResponseEntity<?> authenticateCustomer(@RequestBody LoginRequest request) {
+//		System.out.println("in auth cust " + request);
+//		return ResponseEntity.ok(service.authenticateCustomer(request.getCustomerId(), request.getPassword()));
+//	}
+//	@PostMapping("/signin")
+//	public /* @ResponseBody */ ResponseEntity<?> authenticateCustomer(@RequestBody LoginRequest request) {
+//		System.out.println("in auth cust " + request);
+//		return ResponseEntity.ok(userservice.authenticateUser(request.getUsername(), request.getPassword()));
+//	}
+//	
 	
 }

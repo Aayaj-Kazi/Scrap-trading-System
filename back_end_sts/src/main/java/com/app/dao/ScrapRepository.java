@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 import com.app.pojos.ScrapPost;
 @Repository
 public interface ScrapRepository extends JpaRepository<ScrapPost, Integer> {
@@ -22,6 +23,8 @@ public interface ScrapRepository extends JpaRepository<ScrapPost, Integer> {
 		
 		//find all scrapost by location/city
 		List<ScrapPost> findByCity(String city);
+		
+		List<ScrapPost> findByUserId(int userId);
 		
 		
 		
