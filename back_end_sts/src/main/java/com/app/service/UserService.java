@@ -2,7 +2,7 @@ package com.app.service;
 
 import java.util.List;
 
-import com.app.dto.LoginResponse;
+
 import com.app.pojos.BidDetails;
 import com.app.pojos.Feedback;
 import com.app.pojos.Report;
@@ -33,5 +33,4 @@ public interface UserService {
 	
 	Report sendreport(Report report);
 	
-	//LoginResponse authenticateUser(String username,String password);
 }

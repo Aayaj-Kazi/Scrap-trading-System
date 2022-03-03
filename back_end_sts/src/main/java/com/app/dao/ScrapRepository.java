@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 import com.app.pojos.ScrapPost;
+import com.app.pojos.User;
 @Repository
 public interface ScrapRepository extends JpaRepository<ScrapPost, Integer> {
 
@@ -24,16 +25,6 @@ public interface ScrapRepository extends JpaRepository<ScrapPost, Integer> {
 		//find all scrapost by location/city
 		List<ScrapPost> findByCity(String city);
 		
-		List<ScrapPost> findByUserId(int userId);
-		
-		
-		
-		//		//Sort all scrap from specific dept as per salary
-//		List<ScrapPost> findByDeptOrderBySalary(String deptId);
-
-//		//Display name n lastName of scrap from a specific dept. : custom query with constr expression\
-//		@Query("select new com.app.pojos.ScrapPost(name,lastName)  from ScrapPost e where e.dept=?1")
-//		List<ScrapPost> getEmpFullNamesByDept(String department);//method name can be any thing since it's custom query method
-//	
+	
 		}
 
