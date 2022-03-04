@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,13 +68,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<ScrapPost> getweightSP(Double weight) {
-		
 		return scrapRepo.findByWeight(weight);
 	}
 
 	@Override
 	public User findByUsername(String username) {
-		
 		return  userRepo.findByUsername(username);
 	}
 
@@ -90,6 +89,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Report sendreport(Report report) {
 		return reportRepo.save(report);
+	}
+
+	@Override
+	public User authenticateUser(String username, String password) {
+		return userRepo.findByUsernameAndPassword(username, password)
+				.orElseThrow(() -> new RuntimeException("User login failed : Invalid Credentials"));
 	}
 
 	

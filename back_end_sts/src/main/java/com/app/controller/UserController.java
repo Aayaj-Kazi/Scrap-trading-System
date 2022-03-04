@@ -1,10 +1,12 @@
 package com.app.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -34,6 +37,25 @@ public class UserController {
 	
 	public UserController() {				//constructor
 		System.out.println("In UserController's Constructor");
+	}
+	
+	@PostMapping("/login") 
+	public String processLoginForm(@RequestParam String email, @RequestParam String password, Model map,
+			HttpSession session) {
+		System.out.println("in process login form " + email + " " + password + " " + map);
+		try {
+			
+			User user = userservice.authenticateUser(email, password);
+			session.setAttribute("user_details", user);
+			
+			return "redirect:/admin";
+
+		} catch (RuntimeException e) {
+			System.out.println("err in class " + getClass() + "in  process login form " + e);
+			map.addAttribute("message", "Invalid Login , Please retry.....");
+			return "/user/login";
+		}
+
 	}
 	
 	@GetMapping("/getAllScrapPost")
