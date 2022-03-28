@@ -21,6 +21,12 @@ class ListScrapPostComponent extends Component {
     addScrapPost(){
         this.props.history.push('/addScrapPost');
     }
+
+    deleteScrapPost(id){
+        ScrapPostService.deleteScrapPost(id).then( res => {
+            this.setState({scrappost: this.state.scrappost.filter(scrappost => scrappost.id!==id)});
+        })
+    }
     
     render() {
         return (
@@ -33,11 +39,13 @@ class ListScrapPostComponent extends Component {
              <table className="table table-striped table-bordered">
                  <thead>
                      <tr>
+                         <th>seller Name</th>
                          <th>city</th>
                          <th>weight</th>
                          <th>Material Type</th>
                          <th>Uploading Date</th>
                          <th>Scrap Image</th>
+                         <th>Action</th>
                      </tr>
                  </thead>
 
@@ -46,11 +54,13 @@ class ListScrapPostComponent extends Component {
                          this.state.scrappost.map(
                              scrap =>
                              <tr key={scrap.id}>
+                                 <td key={scrap.user.id}>{scrap.user.fullname}</td>
                                  <td>{scrap.city}</td>
                                  <td>{scrap.weight}</td>
                                  <td>{scrap.materialType}</td>
                                  <td>{scrap.uploadingDate}</td>
                                  <td>{scrap.scrapImage}</td>
+                                 <td key={scrap.id}><button className="btn btn-primary" onClick={this.deleteScrapPost(scrap.id)}>Delete</button></td>
                              </tr>
                          )
                      }

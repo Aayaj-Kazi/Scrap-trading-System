@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ScrapPostService from '../services/ScrapPostService';
 
 class AddScrapPostComponent extends Component {
     constructor(props){
@@ -18,7 +19,8 @@ class AddScrapPostComponent extends Component {
         this.changeMaterialHandler = this.changeMaterialHandler.bind(this);
         this.changeDateHandler = this.changeDateHandler.bind(this);
         this.changeImageHandler = this.changeImageHandler.bind(this);
-
+        this.postScrapPost = this.postScrapPost.bind(this);
+        this.cancelScrapPost = this.cancelScrapPost.bind(this);
 
     }
 
@@ -41,6 +43,25 @@ class AddScrapPostComponent extends Component {
       changeImageHandler =(event) => {this.setState(
         {image:event.target.value} 
       )};
+
+      postScrapPost = (e) => {e.preventDefault();
+      let scrappost = {city: this.state.city,
+                      weight: this.state.weight,
+                      material: this.state.material,
+                      date: this.state.date,
+                      image: this.state.image};
+                      console.log('scrap post info='+JSON.stringify(scrappost));
+
+                      ScrapPostService.addScrapPost(scrappost).then(res =>{
+                        this.props.history.push('/viewScrapPost');
+                      });
+      }
+
+      cancelScrapPost(){
+        this.props.history.push('/viewScrapPost');
+      }
+
+      
 
 
     render() {
