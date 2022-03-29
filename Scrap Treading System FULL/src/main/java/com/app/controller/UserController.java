@@ -1,11 +1,14 @@
 package com.app.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,30 +29,40 @@ import com.app.pojos.User;
 import com.app.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:3000")
-@RestController
-@RequestMapping("/api/user")
+@Controller
+@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
 	private UserService userservice;
 	
-	
-	
+
 	public UserController() {				//constructor
 		System.out.println("In UserController's Constructor");
 	}
 	
+	
+	
+	@GetMapping("/login")
+	public String showLoginForm() {
+		System.out.println("in show login form");
+		return "/user/login";			// AVN : /WEB-INF/views/user/login.jsp
+	}
+	
 	@PostMapping("/login") 
-	public String processLoginForm(@RequestParam String email, @RequestParam String password, Model map,
+	public String processLoginForm(@RequestParam String username, @RequestParam String password, Model map,
 			HttpSession session) {
-		System.out.println("in process login form " + email + " " + password + " " + map);
+		System.out.println("in process login form " + username + " " + password + " " + map);
 		try {
 			
-			User user = userservice.authenticateUser(email, password);
-			session.setAttribute("user_details", user);
+			User user = userservice.authenticateUser(username, password);
+			session.setAttribute("user_info", user);
 			
-			return "redirect:/admin";
-
+			if((username==("kazias1997@gmail.com") ) && password==("219086") )
+				{return "redirect:/admin";}
+			else
+				{return "redirect:/user/getAllScrapPost";}
+			
 		} catch (RuntimeException e) {
 			System.out.println("err in class " + getClass() + "in  process login form " + e);
 			map.addAttribute("message", "Invalid Login , Please retry.....");
@@ -58,43 +71,79 @@ public class UserController {
 
 	}
 	
+	
+	
 	@GetMapping("/getAllScrapPost")
-	public ResponseEntity<?>  getAllScrapPostDetails(){
+	public String  getAllScrapPostDetails(Model map){
 		System.out.println("In getAllScrapPostDetails()");
-		return new ResponseEntity<> (userservice.getAllScrappost(), HttpStatus.OK);
+		 new ResponseEntity<> (userservice.getAllScrappost(), HttpStatus.OK);
+		 map.addAttribute("allscrappost", userservice.getAllScrappost());
+		 return "/user/getAllScrapPost";
+	}
+	
+	//need to add getscrapPost by relative userID.
+	
+	
+	
+	@GetMapping("/addUser")
+	public String showAddUserForm() {
+		System.out.println("in show adduser form");
+		return "/user/addUser";			
 	}
 	
 	@PostMapping("/addUser")
-	public User adduser(@RequestBody @Valid User user) {
-		return userservice.adduser(user);
+	public String adduser(@RequestBody @Valid User user,Model map) {
+		map.addAttribute("addUser", userservice.adduser(user));
+		return "/user/addUser" ;
 	}
 	
 	@PostMapping("/addScrapPost")
-	public ScrapPost addscrappost(@RequestBody @Valid ScrapPost scrappost) {
-		return userservice.addscrappost(scrappost);
+	public String addscrappost(@RequestBody @Valid ScrapPost scrappost,Model map) {
+		map.addAttribute("addScrapPost", userservice.addscrappost(scrappost));
+		return "/user/addScrapPost" ;
+	}
+	
+	
+	
+	@GetMapping("/addBid")
+	public String showAddBidForm() {
+		System.out.println("in show addBid form");
+		return "/user/addBid";			
 	}
 	
 	@PostMapping("/addBid")
-	public BidDetails addbid(@RequestBody @Valid BidDetails biddetails) {
-		return userservice.addbid(biddetails);
+	public String addbid(@RequestBody @Valid BidDetails biddetails,Model map) {
+		map.addAttribute("addBid", userservice.addbid(biddetails));
+		return "/user/addBid";
 		}
 	
 	@PostMapping("/sendFeedback")
-	public Feedback sendfeedback(@RequestBody @Valid Feedback feedback) {
-		return userservice.sendfeedback(feedback);
+	public String sendfeedback(@RequestBody @Valid Feedback feedback,Model map) {
+		map.addAttribute("sendFeedback", userservice.sendfeedback(feedback));
+		return "/user/sendFeedback";
 		}
 		
-	@PostMapping("/sendReport")
-	public Report sendreport(@RequestBody @Valid Report report) {
-		return userservice.sendreport(report);
+	@PostMapping("/sendReport")//Email
+	public String sendreport(@RequestBody @Valid Report report,Model map) {
+		map.addAttribute("sendReport", userservice.sendreport(report));
+		return "/user/sendReport";
 		}
 	
 	@DeleteMapping("/deletePost/{scrap_id}")
-	public String deleteScrapPost(@PathVariable int scrap_id) {
+	public String deleteScrapPost(@PathVariable int scrap_id,Model map) {
 		System.out.println("In deleteScrapPost()");
-		return userservice.deletePost(scrap_id);
+		map.addAttribute("deletePost", userservice.deletePost(scrap_id));
+		return "/user/getAllScrapPost";
 	}
 	
+	@GetMapping("/logout")
+	public String userLogout(HttpSession session, Model map, HttpServletRequest request, HttpServletResponse resp) {
+		System.out.println("in user logout");
+		map.addAttribute("user_dtls", session.getAttribute("user_details"));
+		session.invalidate();
+		resp.setHeader("refresh", "5;url="+request.getContextPath());
+		return "/user/logout";
+	}
 
 	
 }

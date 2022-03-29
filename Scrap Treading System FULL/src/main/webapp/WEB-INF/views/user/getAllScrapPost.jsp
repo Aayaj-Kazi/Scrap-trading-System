@@ -8,12 +8,10 @@
 <title> Scrap Treading System</title>
 </head>
 <body>
-	<h3>in Index.jsp</h3>
+<h3>Hello , ${sessionScope.user_info.fullname} , Login Successful !</h3>
+	<h3>in getAllScrapPost.jsp</h3>
 	<h3>
-		<a href="<spring:url value='/user/login'/>">User Login</a>
-	</h3>
-	<h3>
-		<a href="<spring:url value='/user/addUser'/>">User Register</a>
+		<a href="<spring:url value='/addBid'/>">Bid</a>
 	</h3>
 	
 
