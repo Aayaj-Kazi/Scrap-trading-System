@@ -11,7 +11,8 @@
 <h3>Hello , ${sessionScope.user_info.fullname} , Login Successful !</h3>
 	<h3>in getAllScrapPost.jsp</h3>
 	<h3>
-		<a href="<spring:url value='/addBid'/>">Bid</a>
+		<a href="<spring:url value='/user/addBid'/>">Bid</a>
+		<a href="<spring:url value='/user/logout'/>">Logout</a>
 	</h3>
 	
 

@@ -97,6 +97,14 @@ public class UserController {
 		return "/user/addUser" ;
 	}
 	
+	
+	
+	@GetMapping("/addScrapPost")
+	public String showAddScrapPostForm() {
+		System.out.println("in show addScrapPost form");
+		return "/user/addScrapPost";			
+	}
+	
 	@PostMapping("/addScrapPost")
 	public String addscrappost(@RequestBody @Valid ScrapPost scrappost,Model map) {
 		map.addAttribute("addScrapPost", userservice.addscrappost(scrappost));
@@ -117,17 +125,34 @@ public class UserController {
 		return "/user/addBid";
 		}
 	
+	
+	@GetMapping("/sendFeedback")
+	public String showSendFeedbackForm() {
+		System.out.println("in show sendFeedback form");
+		return "/user/sendFeedback";			
+	}
+	
 	@PostMapping("/sendFeedback")
 	public String sendfeedback(@RequestBody @Valid Feedback feedback,Model map) {
 		map.addAttribute("sendFeedback", userservice.sendfeedback(feedback));
 		return "/user/sendFeedback";
 		}
 		
+	
+	
+	@GetMapping("/sendReport")
+	public String showSendReportForm() {
+		System.out.println("in show sendReport form");
+		return "/user/sendReport";			
+	}
+	
 	@PostMapping("/sendReport")//Email
 	public String sendreport(@RequestBody @Valid Report report,Model map) {
 		map.addAttribute("sendReport", userservice.sendreport(report));
 		return "/user/sendReport";
 		}
+	
+	
 	
 	@DeleteMapping("/deletePost/{scrap_id}")
 	public String deleteScrapPost(@PathVariable int scrap_id,Model map) {
@@ -136,12 +161,14 @@ public class UserController {
 		return "/user/getAllScrapPost";
 	}
 	
+	
+	
 	@GetMapping("/logout")
 	public String userLogout(HttpSession session, Model map, HttpServletRequest request, HttpServletResponse resp) {
 		System.out.println("in user logout");
-		map.addAttribute("user_dtls", session.getAttribute("user_details"));
+		map.addAttribute("user_dtls", session.getAttribute("user_info"));
 		session.invalidate();
-		resp.setHeader("refresh", "5;url="+request.getContextPath());
+		resp.setHeader("refresh", "3;url="+request.getContextPath());
 		return "/user/logout";
 	}
 

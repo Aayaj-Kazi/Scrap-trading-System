@@ -8,7 +8,7 @@
 <title> Scrap Treading System</title>
 </head>
 <body>
-	<h3>in addUser.jsp</h3>
+	<h3>in addBid.jsp</h3>
 	
 	
 
