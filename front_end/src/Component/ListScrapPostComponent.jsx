@@ -10,7 +10,7 @@ class ListScrapPostComponent extends Component {
         }
 
         this.addScrapPost = this.addScrapPost.bind(this);
-        this.deleteScrapPost =this.deleteScrapPost.bind(this);
+        this.deleteScrapPost = this.deleteScrapPost.bind(this);
     }
 
     componentDidMount(){
@@ -62,7 +62,7 @@ class ListScrapPostComponent extends Component {
                                  <td>{scrap.materialType}</td>
                                  <td>{scrap.uploadingDate}</td>
                                  <td>{scrap.scrapImage}</td>
-                                 <td><button className="btn btn-primary" onClick={this.deleteScrapPost(scrap.id)}>Delete</button></td>
+                                 <td><button className="btn btn-primary"  onClick={ () => this.deleteScrapPost(scrap.id)}>Delete</button></td>
                              </tr>
                          )
                      }
