@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h5>Hello , ${requestScope.user_dtls.name}</h5>
+	<h5>Hello , ${requestScope.user_info.fullname}</h5>
 	<h6>You have logged out ....will be taken to home page shortly....</h6>
 </body>
 </html>

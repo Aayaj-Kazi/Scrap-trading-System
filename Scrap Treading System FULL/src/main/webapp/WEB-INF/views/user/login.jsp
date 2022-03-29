@@ -12,8 +12,8 @@
 	<form  method="post">
 		<table style="background-color: lightgrey; margin: auto">
 			<tr>
-				<td>Enter User Email</td>
-				<td><input type="text" name="email" /></td>
+				<td>Enter Username</td>
+				<td><input type="text" name="username" /></td>
 			</tr>
 			<tr>
 				<td>Enter Password</td>

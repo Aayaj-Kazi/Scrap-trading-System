@@ -166,7 +166,7 @@ public class UserController {
 	@GetMapping("/logout")
 	public String userLogout(HttpSession session, Model map, HttpServletRequest request, HttpServletResponse resp) {
 		System.out.println("in user logout");
-		map.addAttribute("user_dtls", session.getAttribute("user_info"));
+		map.addAttribute("user_info", session.getAttribute("user_info"));
 		session.invalidate();
 		resp.setHeader("refresh", "3;url="+request.getContextPath());
 		return "/user/logout";
