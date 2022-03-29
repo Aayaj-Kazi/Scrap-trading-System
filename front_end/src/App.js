@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import ListScrapPostComponent from './Component/ListScrapPostComponent';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -8,13 +8,12 @@ function App() {
   return (
     <div>
       <Router>
-    <div className="container">
-       <Switch>
-         <Route path='/viewScrapPost' exact component={ListScrapPostComponent}></Route>
-        <Route path='/addScrapPost' component={AddScrapPostComponent}></Route>
-       </Switch>
-
-      
+        <div className="container">
+           <Switch>
+              <Route path='/' exact component={ListScrapPostComponent}></Route>
+              <Route path='/viewScrapPost'  component={ListScrapPostComponent}></Route>
+              <Route path='/addScrapPost' component={AddScrapPostComponent}></Route>
+           </Switch>
     </div>
     </Router>
     </div>
