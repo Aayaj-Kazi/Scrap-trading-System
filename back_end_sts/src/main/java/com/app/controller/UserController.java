@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -40,20 +42,19 @@ public class UserController {
 	}
 	
 	@PostMapping("/login") 
-	public String processLoginForm(@RequestParam String email, @RequestParam String password, Model map,
-			HttpSession session) {
-		System.out.println("in process login form " + email + " " + password + " " + map);
+	public User processLoginForm(@RequestParam String username, @RequestParam String password, 			HttpSession session) {
+		System.out.println("in process login form " + username + " " + password ) ;
 		try {
 			
-			User user = userservice.authenticateUser(email, password);
-			session.setAttribute("user_details", user);
+			User user = userservice.authenticateUser(username, password);
+			session.setAttribute("user_info", user);
 			
-			return "redirect:/admin";
+		
+			return userservice.authenticateUser(username, password);
 
 		} catch (RuntimeException e) {
 			System.out.println("err in class " + getClass() + "in  process login form " + e);
-			map.addAttribute("message", "Invalid Login , Please retry.....");
-			return "/user/login";
+			return null ;
 		}
 
 	}
@@ -96,5 +97,13 @@ public class UserController {
 	}
 	
 
+	@GetMapping("/logout")
+	public String userLogout(HttpSession session, Model map, HttpServletRequest request, HttpServletResponse resp) {
+		System.out.println("in user logout");
+		map.addAttribute("user_info", session.getAttribute("user_info"));
+		session.invalidate();
+		resp.setHeader("refresh", "3;url="+request.getContextPath());
+		return "Logged Out";
+	}
 	
 }
