@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 
 
 import com.app.pojos.BidDetails;
@@ -55,13 +55,23 @@ public class UserController {
 		System.out.println("in process login form " + username + " " + password + " " + map);
 		try {
 			
-			User user = userservice.authenticateUser(username, password);
-			session.setAttribute("user_info", user);
+			String admin1u="kazias1997@gmail.com";
+			String admin1p="219086";
+			String admin2u="shaikhomair1996@gmail.com";
+			String admin2p="219174";
 			
-			if((username==("kazias1997@gmail.com") ) && password==("219086") )
-				{return "redirect:/admin";}
+			if((username==admin1u && password==admin1p) || (username==admin2u && password==admin2p))
+				{
+				User user = userservice.authenticateUser(username, password);
+				session.setAttribute("user_info", user);
+				return "redirect:/admin/getAllScrapPost";}
+			
 			else
-				{return "redirect:/user/getAllScrapPost";}
+				{
+				User user = userservice.authenticateUser(username, password);
+				session.setAttribute("user_info", user);
+				return "redirect:/user/getAllScrapPost";
+				}
 			
 		} catch (RuntimeException e) {
 			System.out.println("err in class " + getClass() + "in  process login form " + e);

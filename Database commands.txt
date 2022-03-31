@@ -21,3 +21,7 @@ insert into report (description,user_id) values('Prajakta is froud. give me my m
 
 TO INSERT SCRAP_POST:
 insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Raipur','Plastic and Metal','url:image.url',curdate(),12.50,2);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Kharadi,Pune','Papers','url:image2.url',curdate(),2.50,2);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Tembhurni','old scooty','url:image3.url',curdate(),85,3);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Parbhani','non-working oven','url:image4.url',curdate(),10,4);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Pune','old TV','url:image5.url',curdate(),5,5);

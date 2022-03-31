@@ -3,6 +3,7 @@ package com.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +32,17 @@ public class AdminController {
 	}
 	
 	
+//	@GetMapping("/getAllScrapPost")
+//	public ResponseEntity<?>  getAllScrapPostDetails(){
+//		System.out.println("In getAllScrapPostDetails()");
+//		return new ResponseEntity<> (adminService.getAllScrappost(), HttpStatus.OK);
+//	}
 	@GetMapping("/getAllScrapPost")
-	public ResponseEntity<?>  getAllScrapPostDetails(){
+	public String  getAllScrapPostDetails(Model map){
 		System.out.println("In getAllScrapPostDetails()");
-		return new ResponseEntity<> (adminService.getAllScrappost(), HttpStatus.OK);
+		 new ResponseEntity<> (adminService.getAllScrappost(), HttpStatus.OK);
+		 map.addAttribute("allscrappost", adminService.getAllScrappost());
+		 return "/user/getAllScrapPost";
 	}
 	
 	@GetMapping("/getAllFeedback")
