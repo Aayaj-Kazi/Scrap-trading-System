@@ -96,6 +96,19 @@ public class UserController {
 		return userservice.deletePost(scrap_id);
 	}
 	
+//	@GetMapping("/employees/{id}")
+//    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+//        Employee employee = employeeRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+//        return ResponseEntity.ok(employee);
+//    }
+	
+	@GetMapping("/getScrapPostById/{scrap_id}")
+	public ResponseEntity<ScrapPost> getScrapPostById(@PathVariable int scrap_id) {
+		System.out.println("In getScrapPostById()");
+		ScrapPost post= userservice.findById(scrap_id);
+		return ResponseEntity.ok(post);}
+	
 
 	@GetMapping("/logout")
 	public String userLogout(HttpSession session, Model map, HttpServletRequest request, HttpServletResponse resp) {

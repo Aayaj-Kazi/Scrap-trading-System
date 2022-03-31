@@ -1,46 +1,36 @@
 import React, { Component } from 'react';
 import ScrapPostService from '../services/ScrapPostService';
 
-class ListScrapPostComponent extends Component {
+class AddBidComponent extends Component {
+
     constructor(props){
         super(props)
 
-        this.state = {
-            scrappost: []
+        this.state ={
+            id:this.props.match.params.id,
+            scrappost:[],
+            bidAmt:''
         }
-
-        this.addScrapPost = this.addScrapPost.bind(this);
-        this.deleteScrapPost = this.deleteScrapPost.bind(this);
-        this.addBid = this.addBid.bind(this);
     }
 
     componentDidMount(){
-        ScrapPostService.getScrapPost().then((res) => {
-            this.setState({scrappost: res.data});
+        ScrapPostService.getScrapPostById(this.state.id).then((res) => {
+        this.setState({scrappost: res.data});
+        // let scrappost=res.data; 
+        // this.setState({
+        //     city: this.state.city,
+        //               weight: this.state.weight,
+        //               material: this.state.material,
+        //               date: this.state.date,
+        //               image: this.state.image});
+        
         });
     }
-
-    addScrapPost(){
-        this.props.history.push('/addScrapPost');
-    }
-
-    deleteScrapPost(id){
-        ScrapPostService.deleteScrapPost(id).then( res => {
-            this.setState({scrappost: this.state.scrappost.filter(scrappost => scrappost.id!==id)});
-        })
-    }
-
-    addBid(id){
-        this.props.history.push(`/addBid/${id}`);
-    }
-    
     render() {
         return (
             <div>
-             <h2 className="text-center">Scrap Posts</h2>
-             <div className="row">
-                 <button className="btn btn-primary" onClick={this.addScrapPost}>Add Scrap Post</button>
-                 </div> 
+             <h2 className="text-center">Add Bid</h2>
+             
              <div className="row">
              <table className="table table-striped table-bordered">
                  <thead>
@@ -51,8 +41,7 @@ class ListScrapPostComponent extends Component {
                          <th>Material Type</th>
                          <th>Uploading Date</th>
                          <th>Scrap Image</th>
-                         <th>Action</th>
-                         <th>Bidding</th>
+                         
                      </tr>
                  </thead>
 
@@ -68,8 +57,7 @@ class ListScrapPostComponent extends Component {
                                  <td>{scrap.materialType}</td>
                                  <td>{scrap.uploadingDate}</td>
                                  <td>{scrap.scrapImage}</td>
-                                 <td><button className="btn btn-primary"  onClick={ () => this.deleteScrapPost(scrap.id)}>Delete</button></td>
-                                 <td><button className="btn btn-primary"  onClick={ () => this.addBid(scrap.id)}>Bid</button></td>
+                    
                              </tr>
                          )
                      }
@@ -81,5 +69,4 @@ class ListScrapPostComponent extends Component {
     }
 }
 
-export default ListScrapPostComponent;
-
+export default AddBidComponent;

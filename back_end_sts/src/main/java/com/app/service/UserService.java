@@ -34,4 +34,6 @@ public interface UserService {
 	Report sendreport(Report report);
 	
 	User authenticateUser(String username, String password);
+	
+	ScrapPost findById(Integer Id);
 }
