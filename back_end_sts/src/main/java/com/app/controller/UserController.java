@@ -47,10 +47,9 @@ public class UserController {
 		try {
 			
 			User user = userservice.authenticateUser(username, password);
-			session.setAttribute("user_info", user);
-			
-		
+			session.setAttribute("user_info", user);	
 			return userservice.authenticateUser(username, password);
+			
 
 		} catch (RuntimeException e) {
 			System.out.println("err in class " + getClass() + "in  process login form " + e);

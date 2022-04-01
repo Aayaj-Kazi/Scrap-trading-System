@@ -10,6 +10,7 @@ function App() {
   return (
     <div>
       <Router>
+      
         <div className="container">
            <Switch>
               <Route path='/' exact component={ListScrapPostComponent}></Route>
@@ -22,6 +23,7 @@ function App() {
     </div>
     </Router>
     </div>
+    
   );
 }
 

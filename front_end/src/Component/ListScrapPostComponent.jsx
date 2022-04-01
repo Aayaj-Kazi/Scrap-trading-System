@@ -16,12 +16,15 @@ class ListScrapPostComponent extends Component {
     }
 
     componentDidMount(){
+        res. setHeader("Access-Control-Allow-Origin", "*");
         ScrapPostService.getScrapPost().then((res) => {
             this.setState({scrappost: res.data});
         });
     }
 
+    
     loginpage(){
+       
         this.props.history.push('/loginpage');
     }
 
