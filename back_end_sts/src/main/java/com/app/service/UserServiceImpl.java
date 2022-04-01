@@ -99,7 +99,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public ScrapPost findById(Integer Id) {
-		// TODO Auto-generated method stub
 		return scrapRepo.getById(Id);
 	}
 

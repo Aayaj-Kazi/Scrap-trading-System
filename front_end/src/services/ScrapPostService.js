@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const SCRAP_LIST_URL = "http://localhost:9090/api/user/getAllScrapPost";
 const ADD_SCRAP_URL = "http://localhost:9090/api/user/addScrapPost";
 const DELETE_SCRAP_URL = "http://localhost:9090/api/user/deletePost";
@@ -9,6 +10,8 @@ const SCRAP_BY_ID_URL = "http://localhost:9090/api/user/getScrapPostById";
 
 
 class ScrapPostService {
+
+   
     getScrapPost(){
         return axios.get(SCRAP_LIST_URL);
     }

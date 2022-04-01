@@ -42,7 +42,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/login") 
-	public User processLoginForm(@RequestParam String username, @RequestParam String password, 			HttpSession session) {
+	public User processLoginForm(@RequestParam String username, @RequestParam String password,HttpSession session) {
 		System.out.println("in process login form " + username + " " + password ) ;
 		try {
 			
@@ -96,12 +96,6 @@ public class UserController {
 		return userservice.deletePost(scrap_id);
 	}
 	
-//	@GetMapping("/employees/{id}")
-//    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-//        Employee employee = employeeRepository.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
-//        return ResponseEntity.ok(employee);
-//    }
 	
 	@GetMapping("/getScrapPostById/{scrap_id}")
 	public ResponseEntity<ScrapPost> getScrapPostById(@PathVariable int scrap_id) {

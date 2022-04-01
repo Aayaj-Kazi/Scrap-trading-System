@@ -95,6 +95,17 @@ public class UserController {
 	
 	
 	
+	
+	@GetMapping("/getScrapPostById/{scrap_id}")
+	public String getScrapPostById(@PathVariable int scrap_id,Model map) {
+		System.out.println("In getScrapPostById()");
+		new ResponseEntity<> (userservice.findById(scrap_id), HttpStatus.OK);
+	
+		return "/user/getScrapPostById";
+	}
+		
+	
+	
 	@GetMapping("/addUser")
 	public String showAddUserForm() {
 		System.out.println("in show adduser form");

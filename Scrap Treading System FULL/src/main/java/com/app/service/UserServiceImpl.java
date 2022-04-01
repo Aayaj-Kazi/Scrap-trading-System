@@ -97,6 +97,10 @@ public class UserServiceImpl implements UserService {
 				.orElseThrow(() -> new RuntimeException("User login failed : Invalid Credentials"));
 	}
 
+	@Override
+	public ScrapPost findById(Integer Id) {
+		return scrapRepo.getById(Id);
+	}
 	
 
 	

@@ -12,12 +12,17 @@ class ListScrapPostComponent extends Component {
         this.addScrapPost = this.addScrapPost.bind(this);
         this.deleteScrapPost = this.deleteScrapPost.bind(this);
         this.addBid = this.addBid.bind(this);
+        this.loginpage=this.loginpage.bind(this);
     }
 
     componentDidMount(){
         ScrapPostService.getScrapPost().then((res) => {
             this.setState({scrappost: res.data});
         });
+    }
+
+    loginpage(){
+        this.props.history.push('/loginpage');
     }
 
     addScrapPost(){
@@ -75,6 +80,9 @@ class ListScrapPostComponent extends Component {
                      }
                  </tbody>
                  </table>    
+                 <div className="row">
+                 <button className="btn btn-primary" onClick={this.loginpage}>Login</button>
+                 </div> 
              </div>  
             </div>
         );
