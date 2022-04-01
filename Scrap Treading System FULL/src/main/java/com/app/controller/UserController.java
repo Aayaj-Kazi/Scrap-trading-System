@@ -96,11 +96,11 @@ public class UserController {
 	
 	
 	
-	@GetMapping("/getScrapPostById/{scrap_id}")
+	@GetMapping("/getScrapPostById")
 	public String getScrapPostById(@PathVariable int scrap_id,Model map) {
 		System.out.println("In getScrapPostById()");
 		new ResponseEntity<> (userservice.findById(scrap_id), HttpStatus.OK);
-	
+		 map.addAttribute("getScrapPostById", userservice.findById(scrap_id));
 		return "/user/getScrapPostById";
 	}
 		

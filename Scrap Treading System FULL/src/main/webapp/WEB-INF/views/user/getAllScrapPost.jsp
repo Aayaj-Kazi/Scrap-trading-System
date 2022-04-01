@@ -39,12 +39,13 @@ logout {
 		<tbody>
 			<c:forEach var="scrappost" items="${requestScope.allscrappost}">
 				<tr value="${scrappost.id}">
+				<td>${scrappost.user.fullname }</td>
 					<td>${scrappost.uploadingDate}</td>
 					<td>${scrappost.city}</td>
 					<td>${scrappost.weight}</td>
 					<td>${scrappost.materialType}</td>
 					<td>${scrappost.scrapImage}</td>
-					<td><a href="<spring:url value='/user/addBid'/>">Bid</a></td>
+					<td><a href="<spring:url value='/user/addBid?getScrapPostById=${scrappost.id}'/>">Bid</a></td>
 
 				</tr>
 
