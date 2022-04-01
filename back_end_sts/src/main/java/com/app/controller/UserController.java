@@ -42,7 +42,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/login") 
-	public User processLoginForm(@RequestParam String username, @RequestParam String password,HttpSession session) {
+	public User processLoginForm(@RequestParam(name="username") String username, @RequestParam(name="password") String password,HttpSession session) {
 		System.out.println("in process login form " + username + " " + password ) ;
 		try {
 			

@@ -51,7 +51,7 @@ class AddBidComponent extends Component {
                              scrap =>
                              
                              <tr key={scrap.id}>
-                                 <td key={scrap.user.id}>{scrap.user.fullname}</td>
+                                 {/* <td key={scrap.user.id}>{scrap.user.fullname}</td> */}
                                  <td>{scrap.city}</td>
                                  <td>{scrap.weight}</td>
                                  <td>{scrap.materialType}</td>

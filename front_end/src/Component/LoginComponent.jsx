@@ -3,12 +3,14 @@ import AuthenticationService from '../services/AuthenticationService';
 
 class LoginComponent extends Component {
 
+    
+    
     constructor(props) {
         super(props)
 
         this.state = {
-            username: 'haneef',
-            password: '123',
+            username: '',
+            password: '',
             hasLoginFailed: false,
             showSuccessMessage: false
         }
@@ -32,44 +34,44 @@ class LoginComponent extends Component {
     handleChangePassword= (event)=> {
         this.setState(
             {
-                password
-                    : event.target.value
+                
+                password : event.target.value
             }
         )
     };
 
     loginClicked() {
         //in28minutes,dummy
-        // if(this.state.username==='in28minutes' && this.state.password==='dummy'){
-        //     AuthenticationService.registerSuccessfulLogin(this.state.username,this.state.password)
-        //     this.props.history.push(`/courses`)
-        //     //this.setState({showSuccessMessage:true})
-        //     //this.setState({hasLoginFailed:false})
+        // if(this.state.username==='haneef' && this.state.password==='123'){
+        //     AuthenticationService.processLoginForm(this.state.username, this.state.password)
+        //     this.props.history.push(`/addScrapPost`)
+        //     this.setState({showSuccessMessage:true})
+        //     this.setState({hasLoginFailed:false})
         // }
         // else {
         //     this.setState({showSuccessMessage:false})
         //     this.setState({hasLoginFailed:true})
         // }
        
+        // AuthenticationService
+        //     .processLoginForm(this.state.username, this.state.password)
+        //     .then(() => {
+        //         //AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password)
+        //         this.props.history.push('/addScrapPost')
+        //     }).catch(() => {
+        //         this.setState({ showSuccessMessage: false })
+        //         this.setState({ hasLoginFailed: true })
+        //     })
+
         AuthenticationService
             .processLoginForm(this.state.username, this.state.password)
-            .then(() => {
-                //AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password)
+            .then((response) => {
+                AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, response.data.token)
                 this.props.history.push(`/addScrapPost`)
             }).catch(() => {
                 this.setState({ showSuccessMessage: false })
                 this.setState({ hasLoginFailed: true })
             })
-
-        // AuthenticationService
-        //     .executeJwtAuthenticationService(this.state.username, this.state.password)
-        //     .then((response) => {
-        //         AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, response.data.token)
-        //         this.props.history.push(`/courses`)
-        //     }).catch(() => {
-        //         this.setState({ showSuccessMessage: false })
-        //         this.setState({ hasLoginFailed: true })
-        //     })
 
     }
 

@@ -39,9 +39,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class ScrapPost extends BaseEntity{
 
-	
+	//@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id",nullable = false)
+	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 	
 	@Column(nullable = false,length = 20)
