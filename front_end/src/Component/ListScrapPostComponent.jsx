@@ -16,7 +16,7 @@ class ListScrapPostComponent extends Component {
     }
 
     componentDidMount(){
-        res. setHeader("Access-Control-Allow-Origin", "*");
+        // res. setHeader("Access-Control-Allow-Origin", "*");
         ScrapPostService.getScrapPost().then((res) => {
             this.setState({scrappost: res.data});
         });
