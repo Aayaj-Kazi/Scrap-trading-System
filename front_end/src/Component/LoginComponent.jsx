@@ -22,25 +22,31 @@ class LoginComponent extends Component {
 
     handleChangeUsername=(event)=> {
         this.setState(
-            {
-                
-                  username  : event.target.value
-            }
+            {username:event.target.value}
         )
     };
-
-    
-
-    handleChangePassword= (event)=> {
+  
+    handleChangePassword=(event)=> {
         this.setState(
-            {
-                
-                password : event.target.value
-            }
+            {password:event.target.value}
         )
     };
 
-    loginClicked() {
+    loginClicked =(e) => {e.preventDefault();
+
+        console.log('username & password info='+JSON.stringify(this.state.username, this.state.password));
+        console.log('username  '+ this.state.username +'& password  ' + this.state.password);
+
+        AuthenticationService
+            .processLoginForm(this.state.username, this.state.password)
+            .then((response) => {
+               // AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, response.data.token)
+                this.props.history.push(`/addScrapPost`)
+            }).catch(() => {
+                this.setState({ showSuccessMessage: false })
+                this.setState({ hasLoginFailed: true })
+            })
+
         //in28minutes,dummy
         // if(this.state.username==='haneef' && this.state.password==='123'){
         //     AuthenticationService.processLoginForm(this.state.username, this.state.password)
@@ -63,15 +69,7 @@ class LoginComponent extends Component {
         //         this.setState({ hasLoginFailed: true })
         //     })
 
-        AuthenticationService
-            .processLoginForm(this.state.username, this.state.password)
-            .then((response) => {
-                AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, response.data.token)
-                this.props.history.push(`/addScrapPost`)
-            }).catch(() => {
-                this.setState({ showSuccessMessage: false })
-                this.setState({ hasLoginFailed: true })
-            })
+        
 
     }
 

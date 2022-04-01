@@ -42,18 +42,18 @@ public class UserController {
 	}
 	
 	@PostMapping("/login") 
-	public User processLoginForm(@RequestParam(name="username") String username, @RequestParam(name="password") String password,HttpSession session) {
-		System.out.println("in process login form " + username + " " + password ) ;
+	public User processLoginForm(@RequestParam(name="username") String username, @RequestParam(name="password") String password, Model map) {
+		System.out.println("in process login form " + username + " " + password +" "+map) ;
 		try {
 			
 			User user = userservice.authenticateUser(username, password);
-			session.setAttribute("user_info", user);	
+			map.addAttribute("user_info", user);	
 			return userservice.authenticateUser(username, password);
 			
 
 		} catch (RuntimeException e) {
 			System.out.println("err in class " + getClass() + "in  process login form " + e);
-			return null ;
+			return null; 
 		}
 
 	}

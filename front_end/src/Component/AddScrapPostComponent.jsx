@@ -8,9 +8,9 @@ class AddScrapPostComponent extends Component {
         this.state = {
             city:'',
             weight:'',
-            material:'',
-            date:'',
-            image:''
+            materialType:'',
+            uploadingDate:'',
+            scrapImage:''
 
         }
 
@@ -18,7 +18,7 @@ class AddScrapPostComponent extends Component {
         this.changeWeightHandler = this.changeWeightHandler.bind(this);
         this.changeMaterialHandler = this.changeMaterialHandler.bind(this);
         this.changeDateHandler = this.changeDateHandler.bind(this);
-        this.changeImageHandler = this.changeImageHandler.bind(this);
+        this.changescrapImageHandler = this.changescrapImageHandler.bind(this);
         this.postScrapPost = this.postScrapPost.bind(this);
         this.cancelScrapPost = this.cancelScrapPost.bind(this);
 
@@ -33,23 +33,23 @@ class AddScrapPostComponent extends Component {
       )};
 
       changeMaterialHandler =(event) => {this.setState(
-        {material:event.target.value} 
+        {materialType:event.target.value} 
       )};
 
       changeDateHandler =(event) => {this.setState(
-        {date:event.target.value} 
+        {uploadingDate:event.target.value} 
       )};
 
-      changeImageHandler =(event) => {this.setState(
-        {image:event.target.value} 
+      changescrapImageHandler =(event) => {this.setState(
+        {scrapImage:event.target.value} 
       )};
 
       postScrapPost = (e) => {e.preventDefault();
       let scrappost = {city: this.state.city,
                       weight: this.state.weight,
-                      material: this.state.material,
-                      date: this.state.date,
-                      image: this.state.image};
+                      materialType: this.state.materialType,
+                      uploadingDate: this.state.uploadingDate,
+                      scrapImage: this.state.scrapImage};
                       console.log('scrap post info='+JSON.stringify(scrappost));
 
                       ScrapPostService.addScrapPost(scrappost).then(res =>{
@@ -79,11 +79,11 @@ class AddScrapPostComponent extends Component {
                                       <label>Weight</label>
                                       <input placeholder='weight' name='weight' className='form-control' value={this.state.weight} onChange={this.changeWeightHandler}></input>
                                       <label>Material Type</label>
-                                      <input placeholder='material' name='material' className='form-control' value={this.state.material} onChange={this.changeMaterialHandler}></input>
+                                      <input placeholder='materialType' name='materialType' className='form-control' value={this.state.materialType} onChange={this.changeMaterialHandler}></input>
                                       <label>Uploading Date</label>
-                                      <input placeholder='date' name='date' className='form-control' value={this.state.date} onChange={this.changeDateHandler}></input>
-                                      <label>Scrap Image</label>
-                                      <input placeholder='image' name='image' className='form-control' value={this.state.image} onChange={this.changeImageHandler}></input>
+                                      <input placeholder='uploadingDate' name='uploadingDate' className='form-control' value={this.state.uploadingDate} onChange={this.changeDateHandler}></input>
+                                      <label>Scrap scrapImage</label>
+                                      <input placeholder='scrapImage' name='scrapImage' className='form-control' value={this.state.scrapImage} onChange={this.changescrapImageHandler}></input>
                                       <button className="btn btn-success" onClick={this.postScrapPost}>Post</button>
                                       <button className="btn btn-danger" onClick={this.cancelScrapPost} style={{marginLeft : "10px"}}>Cancel</button>
                                   </div>

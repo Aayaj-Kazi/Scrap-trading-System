@@ -7,9 +7,12 @@ export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 
 class AuthenticationService {
 
-    processLoginForm(username, password){
-            return axios.post(LOGIN_URL,
-                username, password )
+    processLoginForm(username,password){
+        console.log(username+" "+password)
+        var us="?username="+username+"&password="+password;
+        //return axios.post(`${API_URL}/api/user/login`,{username, password});
+        return axios.post(LOGIN_URL+us);
+            //return axios.post(LOGIN_URL,{username:"username",password:"password"});
                
             //{ headers: { authorization: this.createBasicAuthToken(username, password) } })
     
