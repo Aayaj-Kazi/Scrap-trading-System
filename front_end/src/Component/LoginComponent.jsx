@@ -11,6 +11,7 @@ class LoginComponent extends Component {
         this.state = {
             username: '',
             password: '',
+            user:{},
             hasLoginFailed: false,
             showSuccessMessage: false
         }
@@ -32,8 +33,14 @@ class LoginComponent extends Component {
         )
     };
 
+
     loginClicked =(e) => {e.preventDefault();
 
+         JSON.stringify({
+            username:this.state.username,
+            password:this.state.password
+            
+          })
         console.log('username & password info='+JSON.stringify(this.state.username, this.state.password));
         console.log('username  '+ this.state.username +'& password  ' + this.state.password);
 
@@ -41,6 +48,8 @@ class LoginComponent extends Component {
             .processLoginForm(this.state.username, this.state.password)
             .then((response) => {
                // AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, response.data.token)
+               this.setState({user:JSON});
+  localStorage.setItem("loggedinuser",JSON.stringify(this.state.user));
                 this.props.history.push(`/addScrapPost`)
             }).catch(() => {
                 this.setState({ showSuccessMessage: false })

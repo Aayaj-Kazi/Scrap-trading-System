@@ -71,6 +71,7 @@ class AddScrapPostComponent extends Component {
                   <div className="row">
                       <div className="card col-md-6 offset-md-3 offset-md-3">
                           <h2 className="text-center">Add Scrap Post</h2>
+                          <h1>Welcome,{JSON.parse(localStorage.getItem("loggedinuser")).username}</h1>
                           <div className="card-body">
                               <form>
                                   <div className="form-group">
