@@ -96,7 +96,7 @@ const SignIn=()=>{
                 <div id="button" className="row">
                   <button onClick={signinUser}>Login</button>
                 </div>
-                <Link className="row" to="/signup">don't have an account</Link>
+                <Link className="row" to="/register">don't have an account</Link>
                 <Link className="row" to="/ChangePassword">forgot password ?</Link>
             </div>
           

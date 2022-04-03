@@ -97,8 +97,8 @@ public class UserController {
 	}
 	
 	
-@GetMapping("/getScrapPostById")
-	public ResponseEntity<ScrapPost> getScrapPostById(@RequestParam int scrap_id) {
+@GetMapping("/getScrapPostById/{scrap_id}")
+	public ResponseEntity<ScrapPost> getScrapPostById(@PathVariable int scrap_id) {
 		System.out.println("In getScrapPostById()");
 		ScrapPost post= userservice.findById(scrap_id);
 		return ResponseEntity.ok(post);}
