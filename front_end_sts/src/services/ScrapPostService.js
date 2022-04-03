@@ -6,12 +6,15 @@ const ADD_SCRAP_URL = "http://localhost:9090/api/user/addScrapPost";
 const DELETE_SCRAP_URL = "http://localhost:9090/api/user/deletePost";
 const ADD_BID_URL = "http://localhost:9090/api/user/addBid";
 const SCRAP_BY_ID_URL = "http://localhost:9090/api/user/getScrapPostById";
-
+const ADD_USER_URL = "http://localhost:9090/api/user/addUser";
 
 
 class ScrapPostService {
 
-   
+    addUser(user){
+        return axios.post(ADD_USER_URL,user);
+    }
+
     getScrapPost(){
         return axios.get(SCRAP_LIST_URL);
     }

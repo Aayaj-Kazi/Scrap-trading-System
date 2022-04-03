@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useHistory } from 'react-router-dom';
+//import { useHistory } from 'react-router-dom';
 import ScrapPostService from '../services/ScrapPostService';
 
 class AddBidComponent extends Component {
@@ -28,6 +28,10 @@ class AddBidComponent extends Component {
         
         });
     }
+    report(){
+        this.props.history.push('/reportScrappost');
+      }
+      
     render() {
         return (
             <div>
@@ -65,6 +69,7 @@ class AddBidComponent extends Component {
                      }
                  </tbody>
                  </table>    
+                 <button className="btn btn-success" onClick={this.report}>Report ScrapPost</button>
              </div>  
             </div>
         );

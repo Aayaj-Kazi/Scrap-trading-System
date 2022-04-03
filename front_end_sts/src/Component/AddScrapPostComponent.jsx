@@ -4,20 +4,26 @@ import ScrapPostService from '../services/ScrapPostService';
 class AddScrapPostComponent extends Component {
     constructor(props){
         super(props)
+        
+    // var today = new Date(),
 
+    // date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var formatedMysqlString = (new Date ((new Date((new Date(new Date())).toISOString() )).getTime() - ((new Date()).getTimezoneOffset()*60000))).toISOString().slice(0, 19).replace('T', ' ');
+console.log( formatedMysqlString );
         this.state = {
             city:'',
             weight:'',
             materialType:'',
-            uploadingDate:'',
+            uploadingDate:formatedMysqlString,
             scrapImage:''
 
         }
+        
 
         this.changeCityHandler = this.changeCityHandler.bind(this);
         this.changeWeightHandler = this.changeWeightHandler.bind(this);
         this.changeMaterialHandler = this.changeMaterialHandler.bind(this);
-        this.changeDateHandler = this.changeDateHandler.bind(this);
+       // this.changeDateHandler = this.changeDateHandler.bind(this);
         this.changescrapImageHandler = this.changescrapImageHandler.bind(this);
         this.postScrapPost = this.postScrapPost.bind(this);
         this.cancelScrapPost = this.cancelScrapPost.bind(this);
@@ -36,9 +42,9 @@ class AddScrapPostComponent extends Component {
         {materialType:event.target.value} 
       )};
 
-      changeDateHandler =(event) => {this.setState(
-        {uploadingDate:event.target.value} 
-      )};
+      // changeDateHandler =(event) => {this.setState(
+      //   {uploadingDate:event.target.value} 
+      // )};
 
       changescrapImageHandler =(event) => {this.setState(
         {scrapImage:event.target.value} 
@@ -81,8 +87,8 @@ class AddScrapPostComponent extends Component {
                                       <input placeholder='weight' name='weight' className='form-control' value={this.state.weight} onChange={this.changeWeightHandler}></input>
                                       <label>Material Type</label>
                                       <input placeholder='materialType' name='materialType' className='form-control' value={this.state.materialType} onChange={this.changeMaterialHandler}></input>
-                                      <label>Uploading Date</label>
-                                      <input placeholder='uploadingDate' name='uploadingDate' className='form-control' value={this.state.uploadingDate} onChange={this.changeDateHandler}></input>
+                                      {/* <label>Uploading Date</label>
+                                      <input placeholder='uploadingDate' name='uploadingDate' className='form-control' value={this.state.uploadingDate} onChange={this.changeDateHandler}></input> */}
                                       <label>Scrap scrapImage</label>
                                       <input placeholder='scrapImage' name='scrapImage' className='form-control' value={this.state.scrapImage} onChange={this.changescrapImageHandler}></input>
                                       <button className="btn btn-success" onClick={this.postScrapPost}>Post</button>

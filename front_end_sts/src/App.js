@@ -9,7 +9,9 @@ import LoginComponent from './Component/LoginComponent';
 import SignIn from './Component/SignIn/SignIn';
 import UserContext from './Session/Session';
 import { useState } from 'react';
-import SignUp from './Component/SignUp/SignUp';
+
+import AddUserComponent from './Component/AddUserComponent';
+import ReportComponent from './Component/ReportComponent';
 
 function App() {
   const [value, setValue] = useState('')
@@ -23,11 +25,14 @@ function App() {
            <UserContext.Provider value={{value,setValue}}>
            
               <Route path='/' exact component={SignIn}></Route>
-              <Route path='/SignUp' component={SignUp}></Route>
+              <Route path='/register' exact component={AddUserComponent}></Route>
+              <Route path='/login' exact component={SignIn}></Route>
               <Route path='/loginpage'  component={LoginComponent}></Route>
               <Route path='/viewScrapPost'  component={ListScrapPostComponent}></Route>
               <Route path='/addScrapPost' component={AddScrapPostComponent}></Route>
               <Route path='/addBid/:id' component={AddBidComponent}></Route>
+              <Route path='/reportScrappost' component={ReportComponent}></Route>
+              
               </UserContext.Provider> 
            </Switch>
     </div>
