@@ -1,0 +1,16 @@
+
+.d-flex li{
+    padding: 1rem;
+    background-color: aliceblue;
+    border: 2px solid #fff;
+    color: #fff;
+    text-align: center;
+    float: left;
+    margin: 5px;
+    border-radius: 2px;
+  }
+  
+  .example-parent{
+    border: 1px solid #999
+  }
+  

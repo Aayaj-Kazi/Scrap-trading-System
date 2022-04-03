@@ -49,6 +49,7 @@ public class User extends BaseEntity{
 	@Column(length = 45)
 	private String address;
 	
+	
 	@Column(length =40 )
 	private String username;
 	

@@ -5,6 +5,9 @@ insert into user (address,contact_no,email,fullname,password,username) values('T
 insert into user (address,contact_no,email,fullname,password,username) values('Parbhani,Maharashtra','8888652837','choudharirushi@gmail.com','Choudhari Rushikesh','4444','rushi');
 insert into user (address,contact_no,email,fullname,password,username) values('Pune,Maharashtra','9536874251','jagtapkomal@gmail.com','Jagtap Komal','5555','komal');
 
+insert into user (address,contact_no,email,fullname,password,username) values('Parbhani,Maharashtra','7588155359','shaikhomair1996@gmail.com','Shaikh Omair','219174','shaikhomair');
+insert into user (address,contact_no,email,fullname,password,username) values('Akluj,Maharashtra','9637081930','kazias1997@gmail.com','Kazi Aayaj','219086','kazias');
+
 
 
 TO INSERT FEEDBACK:

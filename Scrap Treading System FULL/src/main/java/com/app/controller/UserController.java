@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,23 +56,32 @@ public class UserController {
 		System.out.println("in process login form " + username + " " + password + " " + map);
 		try {
 			
-			String admin1u="kazias1997@gmail.com";
-			String admin1p="219086";
-			String admin2u="shaikhomair1996@gmail.com";
-			String admin2p="219174";
-			
-			if((username==admin1u && password==admin1p) || (username==admin2u && password==admin2p))
-				{
+			String admin1u = "kazias";
+			String admin1p = "219086";
+			String admin2u = "shaikhomair";
+			String admin2p = "219174";
+
+			if ((username == admin1u && password == admin1p) || (username == admin2u && password == admin2p)) {
 				User user = userservice.authenticateUser(username, password);
 				session.setAttribute("user_info", user);
-				return "redirect:/admin/getAllScrapPost";}
-			
-			else
-				{
+				return "redirect:/admin/getAllScrapPost";
+			}
+
+			else {
 				User user = userservice.authenticateUser(username, password);
 				session.setAttribute("user_info", user);
 				return "redirect:/user/getAllScrapPost";
-				}
+			}
+			
+//			User user = userservice.authenticateUser(username, password);
+//			session.setAttribute("user_info", user);
+//			String admin1u="kazias";
+//
+//		String admin2u="shaikhomair";
+//			if((username== admin1u) || (username== admin2u))
+//			{return "redirect:/admin/getAllScrapPost";}
+//			else
+//			{return "redirect:/user/getAllScrapPost";}
 			
 		} catch (RuntimeException e) {
 			System.out.println("err in class " + getClass() + "in  process login form " + e);
@@ -93,11 +103,16 @@ public class UserController {
 	
 	//need to add getscrapPost by relative userID.
 	
+//	@GetMapping("/getScrapPostById")
+//	public String showSPiIDForm() {
+//		System.out.println("in show getScrapPostById form");
+//		return "/user/getScrapPostById";			
+//	}
 	
 	
 	
 	@GetMapping("/getScrapPostById")
-	public String getScrapPostById(@PathVariable int scrap_id,Model map) {
+	public String getScrapPostById(@RequestParam int scrap_id,Model map) {
 		System.out.println("In getScrapPostById()");
 		new ResponseEntity<> (userservice.findById(scrap_id), HttpStatus.OK);
 		 map.addAttribute("getScrapPostById", userservice.findById(scrap_id));
@@ -113,7 +128,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/addUser")
-	public String adduser(@RequestBody @Valid User user,Model map) {
+	public String adduser(@RequestBody @Valid @ModelAttribute("user") User user,Model map) {
 		map.addAttribute("addUser", userservice.adduser(user));
 		return "/user/addUser" ;
 	}

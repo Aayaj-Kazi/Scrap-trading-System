@@ -1,0 +1,5 @@
+.whiteTextOverride {
+    color: red !important;
+    vertical-align: middle;
+    text-align: center;
+}

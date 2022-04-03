@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.pojos.BidDetails;
 import com.app.pojos.Feedback;
 import com.app.pojos.Report;
+import com.app.pojos.Response;
 import com.app.pojos.ScrapPost;
 import com.app.pojos.User;
 import com.app.service.UserService;
@@ -42,13 +43,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/login") 
-	public User processLoginForm(@RequestParam(name="username") String username, @RequestParam(name="password") String password, Model map) {
-		System.out.println("in process login form " + username + " " + password +" "+map) ;
+	public ResponseEntity<?> processLoginForm(User user) {
+		//System.out.println("in process login form " + username + " " + password +" "+map) ;
 		try {
-			
-			User user = userservice.authenticateUser(username, password);
-			map.addAttribute("user_info", user);	
-			return userservice.authenticateUser(username, password);
+			//@RequestParam(name="username") String username, @RequestParam(name="password") String password, Model map
+			userservice.authenticateUser(user.getUsername(), user.getPassword());
+			//map.addAttribute("user_info", user);	
+			return Response.success(user);
 			
 
 		} catch (RuntimeException e) {
@@ -96,8 +97,8 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/getScrapPostById/{scrap_id}")
-	public ResponseEntity<ScrapPost> getScrapPostById(@PathVariable int scrap_id) {
+@GetMapping("/getScrapPostById")
+	public ResponseEntity<ScrapPost> getScrapPostById(@RequestParam int scrap_id) {
 		System.out.println("In getScrapPostById()");
 		ScrapPost post= userservice.findById(scrap_id);
 		return ResponseEntity.ok(post);}

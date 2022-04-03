@@ -45,7 +45,8 @@ logout {
 					<td>${scrappost.weight}</td>
 					<td>${scrappost.materialType}</td>
 					<td>${scrappost.scrapImage}</td>
-					<td><a href="<spring:url value='/user/addBid?getScrapPostById=${scrappost.id}'/>">Bid</a></td>
+					<td><a href="<spring:url value='/user/addBid'/>">Bid</a></td>
+					<td><a href="<spring:url value='/user/getScrapPostById?scrap_id=${scrappost.id}'/>">Bid getscarppostbyid</a></td> 
 
 				</tr>
 
