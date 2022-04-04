@@ -34,8 +34,8 @@ class ScrapPostService {
         return axios.get(REPORT_LIST_URL);
     }
 
-    deleteUser(){
-        return axios.get(DELETE_USER_URL);
+    deleteUser(id){
+        return axios.delete(DELETE_USER_URL+'/'+id);
     }
 }
 

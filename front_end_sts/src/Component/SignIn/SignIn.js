@@ -40,7 +40,7 @@ const SignIn=()=>{
       const url = 'http://localhost:9090'
 
 
-      // http://localhost:8080/signin
+    
       axios.post(url + '/api/user/login', data).then((response) => {
 
         const result = response.data
@@ -100,7 +100,7 @@ const SignIn=()=>{
                   <button onClick={signinUser}>Login</button>
                 </div>
                 <Link className="row" to="/register">don't have an account</Link>
-                <Link className="row" to="/ChangePassword">forgot password ?</Link>
+                
             </div>
           
           </div>
