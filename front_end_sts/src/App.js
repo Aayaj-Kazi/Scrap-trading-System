@@ -12,6 +12,7 @@ import { useState } from 'react';
 
 import AddUserComponent from './Component/AddUserComponent';
 import ReportComponent from './Component/ReportComponent';
+import AdminHomeComponent from './Component/AdminHomeComponent';
 
 function App() {
   const [value, setValue] = useState('')
@@ -32,6 +33,7 @@ function App() {
               <Route path='/addScrapPost' component={AddScrapPostComponent}></Route>
               <Route path='/addBid/:id' component={AddBidComponent}></Route>
               <Route path='/reportScrappost' component={ReportComponent}></Route>
+              <Route path='/adminhome'  component={AdminHomeComponent}></Route>
               
               </UserContext.Provider> 
            </Switch>

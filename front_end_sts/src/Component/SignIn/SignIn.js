@@ -50,8 +50,11 @@ const SignIn=()=>{
           setValue(result)
 
           alert('Login Succesfull')
-          if (result.data.role === 'admin') {
-            history.push('/viewScrapPost')
+          if (result.data.username === 'kazias') {
+            history.push('/adminhome')
+          }
+          else if (result.data.username === 'shaikhomair') {
+            history.push('/adminhome')
           }
           else {
             history.push('/viewScrapPost')
