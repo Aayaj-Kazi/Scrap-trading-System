@@ -6,22 +6,23 @@ export default class AdminUserComponent extends Component {
         super(props)
 
         this.state = {
-            user: []
+            users: []
         }
 
         this.deleteUser = this.deleteUser.bind(this)
 
     }
     componentDidMount(){
+        
         // res. setHeader("Access-Control-Allow-Origin", "*");
         AdminService.getAllUsers().then((res) => {
-            this.setState({user: res.data});
+            this.setState({users: res.data});
         });
     }
-
+s
     deleteUser(id){
         AdminService.deleteUser(id).then( res => {
-            this.setState({user: this.state.user.filter(user => user.id!==id)});
+            this.setState({users: this.state.users.filter(users => users.id!==id)});
         })
     }
 
@@ -48,7 +49,7 @@ export default class AdminUserComponent extends Component {
 
                  <tbody>
                      {
-                         this.state.user.map(
+                         this.state.users.map(
                              user =>
                              
                              <tr key={user.id}>

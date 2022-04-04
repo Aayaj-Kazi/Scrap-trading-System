@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AdminService from '../../services/AdminService';
+import ScrapPostService from '../../services/ScrapPostService';
 
 export default class AdminScrapPostComponent extends Component {
     constructor(props){
@@ -13,6 +14,10 @@ export default class AdminScrapPostComponent extends Component {
 
     }
     componentDidMount(){
+        this.state.username=localStorage.getItem('username')
+    ScrapPostService.getUserByUsername(this.state.username).then((res) => {
+        this.setState({user: res.data});
+    });
         // res. setHeader("Access-Control-Allow-Origin", "*");
         AdminService.getAllScrapPost().then((res) => {
             this.setState({scrappost: res.data});
@@ -28,7 +33,7 @@ export default class AdminScrapPostComponent extends Component {
   render() {
     
         return (
-            <div>
+            <div><h3>  {this.state.user.fullname}</h3>
              <h2 className="text-center">Scrap Posts</h2>
              <div className="row">
                  <button className="btn btn-primary" onClick={this.addScrapPost}>Add Scrap Post</button>

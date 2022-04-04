@@ -99,6 +99,12 @@ public class UserController {
 		return userservice.deletePost(scrap_id);
 	}
 	
+	@GetMapping("/findByUsername/{username}")
+	public User getUserByUsername(@PathVariable String username) {
+		System.out.println("In findByUsername()");
+		return userservice.findByUsername(username);
+	}
+	
 //	@GetMapping("/getcar/{id}")
 //    public ResponseEntity<?> getAllCars(@PathVariable("id") int id){
 //        List<Car> list=carservice.findByCompany1(id);

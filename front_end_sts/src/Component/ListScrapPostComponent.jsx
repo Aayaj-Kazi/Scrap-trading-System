@@ -7,6 +7,7 @@ class ListScrapPostComponent extends Component {
         super(props)
 
         this.state = {
+            user:[],
             scrappost: []
         }
 
@@ -17,13 +18,24 @@ class ListScrapPostComponent extends Component {
         this.giveFeedback=this.giveFeedback.bind(this)
     }
 
+    // componentDidMount(){
+    //     // res. setHeader("Access-Control-Allow-Origin", "*");
+    //     this.state.username=localStorage.getItem('username')
+    //     ScrapPostService.getUserByUsername(this.state.username).then((res) => {
+    //         this.setState({user: res.data});
+    //     });}
+
+
     componentDidMount(){
+        this.state.username=localStorage.getItem('username')
+        ScrapPostService.getUserByUsername(this.state.username).then((res) => {
+            this.setState({user: res.data});
+        });
         // res. setHeader("Access-Control-Allow-Origin", "*");
         ScrapPostService.getScrapPost().then((res) => {
             this.setState({scrappost: res.data});
         });
     }
-
     
     loginpage(){
        
@@ -51,6 +63,7 @@ class ListScrapPostComponent extends Component {
     render() {
         return (
             <div>
+                <h3>Welcome,  {this.state.user.fullname}</h3>
              <h2 className="text-center">Scrap Posts</h2>
              <div className="row">
                  <button className="btn btn-primary" onClick={this.addScrapPost}>Add Scrap Post</button>

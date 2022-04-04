@@ -22,7 +22,7 @@ const SignIn=()=>{
   const history = useHistory(); 
   
 
-  const signinUser = () => {
+  const signinUser = props => {
    
     if (username.length === 0) {
       alert('please enter email')
@@ -39,7 +39,10 @@ const SignIn=()=>{
       
       const url = 'http://localhost:9090'
 
-
+      // this.props.history.push({
+      //   pathname: '/page',
+      //     state: data // your data array of objects
+      // })
     
       axios.post(url + '/api/user/login', data).then((response) => {
 
@@ -50,10 +53,12 @@ const SignIn=()=>{
         
         if (result.status === 'success') {
           setValue(result)
-
+          localStorage.setItem('username',result.data.username)
           alert('Login Succesfull')
           if (result.data.username === 'kazias') {
-            history.push('/adminhome')
+           
+           history.push({ pathname: '/adminhome', state: result })
+           
           }
           else if (result.data.username === 'shaikhomair') {
             history.push('/adminhome')

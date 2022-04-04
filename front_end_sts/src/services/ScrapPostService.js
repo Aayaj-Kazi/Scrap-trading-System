@@ -9,12 +9,16 @@ const SCRAP_BY_ID_URL = "http://localhost:9090/api/user/getScrapPostById";
 const ADD_USER_URL = "http://localhost:9090/api/user/addUser";
 const SEND_REPORT_URL = "http://localhost:9090/api/user/sendReport";
 const SEND_FEEDBACK_URL = "http://localhost:9090/api/user/sendFeedback";
+const GET_USERbyUSERNAME_URL = "http://localhost:9090/api/user/findByUsername";
 class ScrapPostService {
 
     addUser(user){
         return axios.post(ADD_USER_URL,user);
     }
 
+    getUserByUsername(username){
+        return axios.get(GET_USERbyUSERNAME_URL+'/'+username)
+    }
     sendReport(report){
         return axios.post(SEND_REPORT_URL,report);
     }
