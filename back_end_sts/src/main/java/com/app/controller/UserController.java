@@ -1,5 +1,8 @@
 package com.app.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -96,12 +99,20 @@ public class UserController {
 		return userservice.deletePost(scrap_id);
 	}
 	
+//	@GetMapping("/getcar/{id}")
+//    public ResponseEntity<?> getAllCars(@PathVariable("id") int id){
+//        List<Car> list=carservice.findByCompany1(id);
+//        list.forEach(System.out::println);
+//        return Response.success(list);
+//    }
+	
 	
 @GetMapping("/getScrapPostById/{scrap_id}")
-	public ResponseEntity<ScrapPost> getScrapPostById(@PathVariable int scrap_id) {
+	public ResponseEntity<?> getScrapPostById(@PathVariable int scrap_id) {
 		System.out.println("In getScrapPostById()");
-		ScrapPost post= userservice.findById(scrap_id);
-		return ResponseEntity.ok(post);}
+		Optional<ScrapPost> post= userservice.findById(scrap_id);
+		return Response.success(post);
+		}
 	
 
 	@GetMapping("/logout")

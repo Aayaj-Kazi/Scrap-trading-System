@@ -44,7 +44,9 @@ const SignIn=()=>{
       axios.post(url + '/api/user/login', data).then((response) => {
 
         const result = response.data
-
+        // const json=JSON.parse(response);
+        // { this.setState({user:json});
+        // localStorage.setItem("loggedinuser",JSON.stringify(this.state.user));}
         
         if (result.status === 'success') {
           setValue(result)
@@ -68,6 +70,8 @@ const SignIn=()=>{
     }
   }
 
+  
+  
 
   return(
           <div id="loginform">

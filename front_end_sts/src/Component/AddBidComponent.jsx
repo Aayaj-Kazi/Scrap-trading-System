@@ -18,13 +18,13 @@ class AddBidComponent extends Component {
        // const history = useHistory()
         ScrapPostService.getScrapPostById(this.state.id).then((res) => {
         this.setState({scrappost: res.data});
-        // let scrappost=res.data; 
-        // this.setState({
-        //     city: this.state.city,
-        //               weight: this.state.weight,
-        //               material: this.state.material,
-        //               date: this.state.date,
-        //               image: this.state.image});
+        let scrappost=res.data; 
+        this.setState({
+            city: scrappost.city,
+                      weight: scrappost.weight,
+                      material: scrappost.material,
+                      date: scrappost.date,
+                      image: scrappost.image});
         
         });
     }
@@ -53,16 +53,16 @@ class AddBidComponent extends Component {
 
                  <tbody>
                      {
-                         this.state.scrappost.map(
-                             scrap =>
+                         (
                              
-                             <tr key={scrap.id}>
-                                 {/* <td key={scrap.user.id}>{scrap.user.fullname}</td> */}
-                                 <td>{scrap.city}</td>
-                                 <td>{scrap.weight}</td>
-                                 <td>{scrap.materialType}</td>
-                                 <td>{scrap.uploadingDate}</td>
-                                 <td>{scrap.scrapImage}</td>
+                             
+                             <tr key={this.state.id}>
+                                  {/* <td key={this.state.scrappost.user.id}>{this.state.scrappost.user.fullname}</td>  */}
+                                 <td>{this.state.city}</td>
+                                 <td>{this.state.weight}</td>
+                                 <td>{this.state.materialType}</td>
+                                 <td>{this.state.uploadingDate}</td>
+                                 <td>{this.state.scrapImage}</td>
                     
                              </tr>
                          )

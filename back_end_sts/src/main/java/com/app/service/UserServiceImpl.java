@@ -98,8 +98,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ScrapPost findById(Integer Id) {
-		return scrapRepo.getById(Id);
+	public Optional<ScrapPost> findById(Integer Id) {
+		return scrapRepo.findById(Id);
 	}
 
 	

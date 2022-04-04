@@ -1,7 +1,7 @@
 package com.app.service;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import com.app.pojos.BidDetails;
 import com.app.pojos.Feedback;
@@ -35,5 +35,5 @@ public interface UserService {
 	
 	User authenticateUser(String username, String password);
 	
-	ScrapPost findById(Integer Id);
+	Optional<ScrapPost> findById(Integer Id);
 }
