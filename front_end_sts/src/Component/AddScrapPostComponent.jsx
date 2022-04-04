@@ -90,7 +90,7 @@ console.log( formatedMysqlString );
                                       {/* <label>Uploading Date</label>
                                       <input placeholder='uploadingDate' name='uploadingDate' className='form-control' value={this.state.uploadingDate} onChange={this.changeDateHandler}></input> */}
                                       <label>Scrap scrapImage</label>
-                                      <input type='file' placeholder='scrapImage' name='scrapImage' className='form-control' value={this.state.scrapImage} onChange={this.changescrapImageHandler}></input>
+                                      <input type='text' placeholder='scrapImage' name='scrapImage' className='form-control' value={this.state.scrapImage} onChange={this.changescrapImageHandler}></input>
                                       <button className="btn btn-success" onClick={this.postScrapPost}>Post</button>
                                       <button className="btn btn-danger" onClick={this.cancelScrapPost} style={{marginLeft : "10px"}}>Cancel</button>
                                   </div>

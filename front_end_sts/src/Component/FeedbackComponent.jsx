@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import ScrapPostService from '../services/ScrapPostService';
 
-export default class ReportComponent extends Component {
+export default class FeedbackComponent extends Component {
     constructor(props) {
         super(props)
         
     this.state = {
-        value: ''
+        value: '.'
       };
   
       this.handleChange = this.handleChange.bind(this);
@@ -18,18 +18,18 @@ export default class ReportComponent extends Component {
     }
   
     handleSubmit=(event)=> {
-      alert('An Report was submitted: ' + this.state.value);
+      alert('An feedback was submitted: ' + this.state.value);
       event.preventDefault();
     }
     
-    sendReport = (e) => {e.preventDefault();
-      let report = {user: this.state.user,
+    sendFeedback = (e) => {e.preventDefault();
+      let feedback = {user: this.state.user,
         description: this.state.description,
                       
                 };
-                      console.log('user info='+JSON.stringify(report));
+                      console.log('user info='+JSON.stringify(feedback));
 
-                      ScrapPostService.sendReport(report).then(res =>{
+                      ScrapPostService.sendFeedback(feedback).then(res =>{
                         this.props.history.push('/viewScrapPost');
                       });
       }
@@ -42,7 +42,7 @@ export default class ReportComponent extends Component {
            Desciption :
             <textarea value={this.state.value} onChange={this.handleChange}/>
           </label>
-          <input type="submit" value="Submit" onClick={this.sendReport} />
+          <input type="submit" value="Submit" onClick={this.sendFeedback} />
         </form>
       )
   }

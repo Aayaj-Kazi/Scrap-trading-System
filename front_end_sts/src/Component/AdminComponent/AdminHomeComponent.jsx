@@ -9,7 +9,7 @@ export default class AdminHomeComponent extends Component {
         this.props.history.push('/AdmingetAllReport');
       }
       feedback=(e) =>{
-        this.props.history.push('/AdmingetAllScrappost');
+        this.props.history.push('/AdmingetAllFeedback');
       }
       allScrapPost=(e) =>{
         this.props.history.push('/AdmingetAllScrappost');

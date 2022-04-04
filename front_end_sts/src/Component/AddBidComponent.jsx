@@ -12,9 +12,10 @@ class AddBidComponent extends Component {
             scrappost:[],
             bidAmt:''
         }
+        this.addBidhandler=this.addBidhandler.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount (){
        // const history = useHistory()
         ScrapPostService.getScrapPostById(this.state.id).then((res) => {
         this.setState({scrappost: res.data});
@@ -28,10 +29,31 @@ class AddBidComponent extends Component {
         
         });
     }
-    report(){
+
+
+    report =(e)=>{
         this.props.history.push('/reportScrappost');
       }
-      
+
+
+
+      addBidhandler =(event) => {this.setState(
+        {bidAmt:event.target.value} 
+      )};
+
+      addBid = (e) => {e.preventDefault();
+        let bidDetails = {user: this.state.user,
+            bidAmt: this.state.bidAmt,
+                        
+                  };
+                        console.log('user info='+JSON.stringify(bidDetails));
+  
+                        ScrapPostService.addBid(bidDetails).then(res =>{
+                          this.props.history.push('/viewScrapPost');
+                        });
+        }
+
+
     render() {
         return (
             <div>
@@ -68,7 +90,23 @@ class AddBidComponent extends Component {
                          )
                      }
                  </tbody>
-                 </table>    
+                 </table>  
+<div>
+<table><tbody>
+    <tr>
+        <td>
+            Enter Bidding Amount
+        </td>
+        <td>
+            <input type='text' name='addbid' value={this.state.bidAmt} onChange={this.addBidhandler} placeholder='Enter Amount' />
+        </td>
+    </tr>
+   </tbody>
+</table>
+</div>
+
+
+                 <button className="btn btn-success" onClick={this.addBid}>Bid on ScrapPost</button>
                  <button className="btn btn-success" onClick={this.report}>Report ScrapPost</button>
              </div>  
             </div>

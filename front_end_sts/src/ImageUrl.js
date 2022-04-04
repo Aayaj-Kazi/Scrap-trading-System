@@ -1,1 +1,0 @@
-export const Imageurl='http://localhost:9090/'

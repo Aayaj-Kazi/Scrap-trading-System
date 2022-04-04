@@ -5,7 +5,7 @@ import ListScrapPostComponent from './Component/ListScrapPostComponent';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AddScrapPostComponent from './Component/AddScrapPostComponent';
 import AddBidComponent from './Component/AddBidComponent';
-import LoginComponent from './Component/LoginComponent';
+
 import SignIn from './Component/SignIn/SignIn';
 import UserContext from './Session/Session';
 import { useState } from 'react';
@@ -16,6 +16,8 @@ import AdminHomeComponent from './Component/AdminComponent/AdminHomeComponent';
 import AdminScrapPostComponent from './Component/AdminComponent/AdminScrapPostComponent';
 import AdminUserComponent from './Component/AdminComponent/AdminUserComponent';
 import AdminReportComponent from './Component/AdminComponent/AdminReportComponent';
+import AdminfeedbackComponent from './Component/AdminComponent/AdminFeedbackComponent';
+import FeedbackComponent from './Component/FeedbackComponent';
 
 function App() {
   const [value, setValue] = useState('')
@@ -31,15 +33,18 @@ function App() {
               <Route path='/' exact component={SignIn}></Route>
               <Route path='/register' exact component={AddUserComponent}></Route>
               <Route path='/login' exact component={SignIn}></Route>
-              <Route path='/loginpage'  component={LoginComponent}></Route>
+              
               <Route path='/viewScrapPost'  component={ListScrapPostComponent}></Route>
               <Route path='/addScrapPost' component={AddScrapPostComponent}></Route>
               <Route path='/addBid/:id' component={AddBidComponent}></Route>
               <Route path='/reportScrappost' component={ReportComponent}></Route>
+              <Route path='/feedbackUser' component={FeedbackComponent}></Route>
               <Route path='/adminhome'  component={AdminHomeComponent}></Route>
               <Route path='/AdmingetAllScrappost'  component={AdminScrapPostComponent}></Route>
               <Route path='/AdmingetAllUsers'  component={AdminUserComponent}></Route>
               <Route path='/AdmingetAllReport'  component={AdminReportComponent}></Route>
+              <Route path='/AdmingetAllFeedback'  component={AdminfeedbackComponent}></Route>
+              
               
               </UserContext.Provider> 
            </Switch>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Imageurl } from '../ImageUrl';
+
 import ScrapPostService from '../services/ScrapPostService';
 
 class ListScrapPostComponent extends Component {
@@ -14,6 +14,7 @@ class ListScrapPostComponent extends Component {
        // this.deleteScrapPost = this.deleteScrapPost.bind(this);
         this.addBid = this.addBid.bind(this);
         this.loginpage=this.loginpage.bind(this);
+        this.giveFeedback=this.giveFeedback.bind(this)
     }
 
     componentDidMount(){
@@ -31,6 +32,10 @@ class ListScrapPostComponent extends Component {
 
     addScrapPost(){
         this.props.history.push('/addScrapPost');
+    }
+
+    giveFeedback(){
+        this.props.history.push('/feedbackUser');
     }
 
     // deleteScrapPost(id){
@@ -75,7 +80,7 @@ class ListScrapPostComponent extends Component {
                                  <td>{scrap.weight}</td>
                                  <td>{scrap.materialType}</td>
                                  <td>{scrap.uploadingDate}</td>
-                                 <td><img src={scrap.scrapImage} alt="Scrap Image" /></td>
+                                 <td><img src={scrap.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
                                  <td><button className="btn btn-primary"  onClick={ () => this.addBid(scrap.id)}>Bid</button></td>
                              </tr>
                          )
@@ -84,7 +89,9 @@ class ListScrapPostComponent extends Component {
                  </table>    
  {/* <div className="row"> <button className="btn btn-primary" onClick={this.loginpage}>Login</button></div>  
  <td><button className="btn btn-primary"  onClick={ () => this.deleteScrapPost(scrap.id)}>Delete</button></td>
-*/}
+*/}<div className="row">
+<button className="btn btn-primary"  onClick={this.giveFeedback}>Give Feedback</button>
+</div>
              </div>  
             </div>
         );
