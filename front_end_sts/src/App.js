@@ -12,6 +12,10 @@ import { useState } from 'react';
 
 import AddUserComponent from './Component/AddUserComponent';
 import ReportComponent from './Component/ReportComponent';
+import AdminHomeComponent from './Component/AdminComponent/AdminHomeComponent';
+import AdminScrapPostComponent from './Component/AdminComponent/AdminScrapPostComponent';
+import AdminUserComponent from './Component/AdminComponent/AdminUserComponent';
+import AdminReportComponent from './Component/AdminComponent/AdminReportComponent';
 
 function App() {
   const [value, setValue] = useState('')
@@ -32,6 +36,10 @@ function App() {
               <Route path='/addScrapPost' component={AddScrapPostComponent}></Route>
               <Route path='/addBid/:id' component={AddBidComponent}></Route>
               <Route path='/reportScrappost' component={ReportComponent}></Route>
+              <Route path='/adminhome'  component={AdminHomeComponent}></Route>
+              <Route path='/AdmingetAllScrappost'  component={AdminScrapPostComponent}></Route>
+              <Route path='/AdmingetAllUsers'  component={AdminUserComponent}></Route>
+              <Route path='/AdmingetAllReport'  component={AdminReportComponent}></Route>
               
               </UserContext.Provider> 
            </Switch>
