@@ -7,17 +7,19 @@ export default class AdminScrapPostComponent extends Component {
         super(props)
 
         this.state = {
-            scrappost: []
+            scrappost: [],
+            user:[]
         }
 
         this.deleteScrapPost = this.deleteScrapPost
 
     }
     componentDidMount(){
+        // res. setHeader("Access-Control-Allow-Origin", "*");
         this.state.username=localStorage.getItem('username')
-    ScrapPostService.getUserByUsername(this.state.username).then((res) => {
-        this.setState({user: res.data});
-    });
+        ScrapPostService.getUserByUsername(this.state.username).then((res) => {
+            this.setState({user: res.data});
+        });
         // res. setHeader("Access-Control-Allow-Origin", "*");
         AdminService.getAllScrapPost().then((res) => {
             this.setState({scrappost: res.data});
@@ -29,15 +31,18 @@ export default class AdminScrapPostComponent extends Component {
             this.setState({scrappost: this.state.scrappost.filter(scrappost => scrappost.id!==id)});
         })
     }
+    logout=(e) =>{
+        alert('You are logged out');
+        this.props.history.push('/logout');
+      }//<button className="btn btn-success" onClick={this.logout}>Get allFeedback</button><br></br>
 
   render() {
     
         return (
-            <div><h3>  {this.state.user.fullname}</h3>
+            <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
+            <h3>  {this.state.user.fullname}</h3>
              <h2 className="text-center">Scrap Posts</h2>
-             <div className="row">
-                 <button className="btn btn-primary" onClick={this.addScrapPost}>Add Scrap Post</button>
-                 </div> 
+             
              <div className="row">
              <table className="table table-striped table-bordered">
                  <thead>

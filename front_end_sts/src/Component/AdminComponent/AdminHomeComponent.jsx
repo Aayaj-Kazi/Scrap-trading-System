@@ -29,11 +29,17 @@ export default class AdminHomeComponent extends Component {
       allUsers=(e) =>{
         this.props.history.push('/AdmingetAllUsers');
       }
+
+      logout=(e) =>{
+        alert('You are logged out');
+        this.props.history.push('/logout');
+      }//<button className="btn btn-success" onClick={this.logout}>Get allFeedback</button><br></br>
       
       
   render=(e) => {
     return (
-      <div><h2>AdminHomeComponent    </h2>
+      <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
+        <h2>AdminHomeComponent    </h2>
       
       <h3>Welcome, Admin Mr {this.state.user.fullname}</h3>
           <button className="btn btn-success" onClick={this.allUsers}>Get User</button><br></br>
@@ -41,8 +47,7 @@ export default class AdminHomeComponent extends Component {
           
           <button className="btn btn-success" onClick={this.report}>Get all Report </button><br></br>
           <button className="btn btn-success" onClick={this.feedback}>Get allFeedback</button><br></br>
-          
-         
+ 
 
       </div>
     )

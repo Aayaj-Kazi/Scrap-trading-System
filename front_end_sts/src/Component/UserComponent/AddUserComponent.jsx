@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ScrapPostService from '../services/ScrapPostService';
+import ScrapPostService from '../../services/ScrapPostService';
 
 export default class AddUserComponent extends Component {
         constructor(props){

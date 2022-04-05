@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import ScrapPostService from '../../services/ScrapPostService';
 //import { useHistory } from 'react-router-dom';
-import ScrapPostService from '../services/ScrapPostService';
+
 
 class AddBidComponent extends Component {
 
@@ -8,7 +9,7 @@ class AddBidComponent extends Component {
         super(props)
 
         this.state ={
-            id:this.props.match.params.id,
+            user:[],
             scrappost:[],
             bidAmt:''
         }
@@ -16,17 +17,19 @@ class AddBidComponent extends Component {
     }
 
     componentDidMount (){
+        this.state.username=localStorage.getItem('username')
+      ScrapPostService.getUserByUsername(this.state.username).then((res) => {
+          this.setState({user: res.data});
+      });
+
        // const history = useHistory()
-        ScrapPostService.getScrapPostById(this.state.id).then((res) => {
+       this.state.id= localStorage.getItem('scrapId')
+       ScrapPostService.getScrapPostById(this.state.id).then((res) => {
         this.setState({scrappost: res.data});
-        let scrappost=res.data; 
-        this.setState({
-            city: scrappost.city,
-                      weight: scrappost.weight,
-                      material: scrappost.material,
-                      date: scrappost.date,
-                      image: scrappost.image});
-        
+        console.log(JSON.stringify(this.state.scrappost))
+        //console.log(JSON.stringify(resp.data));
+     
+      
         });
     }
 
@@ -41,22 +44,34 @@ class AddBidComponent extends Component {
         {bidAmt:event.target.value} 
       )};
 
+
+      
       addBid = (e) => {e.preventDefault();
-        let bidDetails = {user: this.state.user,
+        let bidDetails = {
             bidAmt: this.state.bidAmt,
-                        
+            scrappost: this.state.scrappost.data,
+            user: this.state.user,
+            
+    
                   };
-                        console.log('user info='+JSON.stringify(bidDetails));
+                        //console.log('bid detials info ='+JSON.stringify(bidDetails));
   
                         ScrapPostService.addBid(bidDetails).then(res =>{
                           this.props.history.push('/viewScrapPost');
                         });
         }
 
+        logout=(e) =>{
+            alert('You are logged out');
+            this.props.history.push('/logout');
+          }//<button className="btn btn-success" onClick={this.logout}>Get allFeedback</button><br></br>
+
 
     render() {
         return (
-            <div>
+            <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
+            <h3>{this.state.user.fullname}</h3>
+            <h6>{this.state.scrappost.city}</h6>
              <h2 className="text-center">Add Bid</h2>
              
              <div className="row">
@@ -69,22 +84,19 @@ class AddBidComponent extends Component {
                          <th>Material Type</th>
                          <th>Uploading Date</th>
                          <th>Scrap Image</th>
-                         
                      </tr>
                  </thead>
 
                  <tbody>
-                     {
-                         (
-                             
-                             
-                             <tr key={this.state.id}>
+                     {                        
+                         (                                                     
+                             <tr key= {this.state.scrappost.id}>
                                   {/* <td key={this.state.scrappost.user.id}>{this.state.scrappost.user.fullname}</td>  */}
-                                 <td>{this.state.city}</td>
-                                 <td>{this.state.weight}</td>
-                                 <td>{this.state.materialType}</td>
-                                 <td>{this.state.uploadingDate}</td>
-                                 <td>{this.state.scrapImage}</td>
+                                 <td>{this.state.scrappost.city}</td>
+                                 <td>{this.state.scrappost.weight}</td>
+                                 <td>{this.state.scrappost.materialType}</td>
+                                 <td>{this.state.scrappost.uploadingDate}</td>
+                                 <td>{this.state.scrappost.scrapImage}</td>
                     
                              </tr>
                          )

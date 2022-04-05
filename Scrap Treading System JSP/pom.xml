@@ -14,7 +14,7 @@
 	<artifactId>back_end_sts_JSP</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>back_end_sts</name>
+	<name>back_end_sts_JSP</name>
 	<description>Scrap Trading System project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

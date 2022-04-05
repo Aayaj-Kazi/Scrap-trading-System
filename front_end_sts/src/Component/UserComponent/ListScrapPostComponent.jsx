@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import ScrapPostService from '../../services/ScrapPostService';
 
-import ScrapPostService from '../services/ScrapPostService';
 
 class ListScrapPostComponent extends Component {
     constructor(props){
@@ -18,22 +18,17 @@ class ListScrapPostComponent extends Component {
         this.giveFeedback=this.giveFeedback.bind(this)
     }
 
-    // componentDidMount(){
-    //     // res. setHeader("Access-Control-Allow-Origin", "*");
-    //     this.state.username=localStorage.getItem('username')
-    //     ScrapPostService.getUserByUsername(this.state.username).then((res) => {
-    //         this.setState({user: res.data});
-    //     });}
-
-
+   
     componentDidMount(){
         this.state.username=localStorage.getItem('username')
         ScrapPostService.getUserByUsername(this.state.username).then((res) => {
             this.setState({user: res.data});
         });
+        
         // res. setHeader("Access-Control-Allow-Origin", "*");
-        ScrapPostService.getScrapPost().then((res) => {
-            this.setState({scrappost: res.data});
+        ScrapPostService.getScrapPost().then((resp) => {
+            this.setState({scrappost: resp.data});
+              
         });
     }
     
@@ -50,19 +45,18 @@ class ListScrapPostComponent extends Component {
         this.props.history.push('/feedbackUser');
     }
 
-    // deleteScrapPost(id){
-    //     ScrapPostService.deleteScrapPost(id).then( res => {
-    //         this.setState({scrappost: this.state.scrappost.filter(scrappost => scrappost.id!==id)});
-    //     })
-    // }
-
     addBid(id){
+        localStorage.setItem('scrapId',id)
+        console.log('scarppost id :'+id)
         this.props.history.push(`/addBid/${id}`);
     }
-    
+    logout=(e) =>{
+        alert('You are logged out');
+        this.props.history.push('/logout');
+      }//<button className="btn btn-success" onClick={this.logout}>Get allFeedback</button><br></br>
     render() {
         return (
-            <div>
+            <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
                 <h3>Welcome,  {this.state.user.fullname}</h3>
              <h2 className="text-center">Scrap Posts</h2>
              <div className="row">

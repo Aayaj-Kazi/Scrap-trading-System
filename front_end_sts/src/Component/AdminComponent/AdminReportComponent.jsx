@@ -17,11 +17,14 @@ export default class AdminReportComponent extends Component {
       });
   }
 
-
+  logout=(e) =>{
+    alert('You are logged out');
+    this.props.history.push('/logout');
+  }//<button className="btn btn-success" onClick={this.logout}>Get allFeedback</button><br></br>
     
   render() {
     return (
-      <div>
+      <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
              <h2 className="text-center">Reports</h2>
               
              <div className="row">

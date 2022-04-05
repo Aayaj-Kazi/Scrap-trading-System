@@ -105,12 +105,6 @@ public class UserController {
 		return userservice.findByUsername(username);
 	}
 	
-//	@GetMapping("/getcar/{id}")
-//    public ResponseEntity<?> getAllCars(@PathVariable("id") int id){
-//        List<Car> list=carservice.findByCompany1(id);
-//        list.forEach(System.out::println);
-//        return Response.success(list);
-//    }
 	
 	
 @GetMapping("/getScrapPostById/{scrap_id}")

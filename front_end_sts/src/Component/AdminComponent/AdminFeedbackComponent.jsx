@@ -16,12 +16,15 @@ export default class AdminfeedbackComponent extends Component {
           this.setState({feedback: res.data});
       });
   }
+  logout=(e) =>{alert('You are logged out');
+    this.props.history.push('/logout');
+  }//<button className="btn btn-success" onClick={this.logout}>Get allFeedback</button><br></br>
 
-
+// add delete feedback function
     
   render() {
     return (
-      <div>
+      <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
              <h2 className="text-center">feedbacks</h2>
               
              <div className="row">

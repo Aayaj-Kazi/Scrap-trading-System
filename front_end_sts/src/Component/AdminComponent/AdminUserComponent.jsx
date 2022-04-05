@@ -25,11 +25,20 @@ s
             this.setState({users: this.state.users.filter(users => users.id!==id)});
         })
     }
+    deleteScrapPost(id){
+        AdminService.deleteScrapPost(id).then( res => {
+            this.setState({scrappost: this.state.scrappost.filter(scrappost => scrappost.id!==id)});
+        })
+    }
+    logout=(e) =>{
+        alert('You are logged out');
+        this.props.history.push('/logout');
+      }//<button className="btn btn-success" onClick={this.logout}>Get allFeedback</button><br></br>
 
   render() {
     
         return (
-            <div>
+            <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
              <h2 className="text-center">All Users</h2>
           
              <div className="row">
@@ -37,11 +46,12 @@ s
              
                  <thead>
                      <tr>
-                         <th>User Name</th>
-                         <th>User Email</th>
-                         <th>User ContactNo</th>
-                         <th>User Address </th>
-                         <th>User Username</th>
+                     <th>User ID</th>
+                         <th> Name</th>
+                         <th> Email</th>
+                         <th> ContactNo</th>
+                         <th> Address </th>
+                         <th> Username</th>
                          <th>Action</th>
                          
                      </tr>

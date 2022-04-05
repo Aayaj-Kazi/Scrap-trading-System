@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ScrapPostService from '../services/ScrapPostService';
+import ScrapPostService from '../../services/ScrapPostService';
 
 class AddScrapPostComponent extends Component {
     constructor(props){
@@ -72,13 +72,16 @@ class AddScrapPostComponent extends Component {
       cancelScrapPost(){
         this.props.history.push('/viewScrapPost');
       }
-
+      logout=(e) =>{
+        alert('You are logged out');
+        this.props.history.push('/logout');
+      }//<button className="btn btn-success" onClick={this.logout}>Get allFeedback</button><br></br>
       
 
 
     render() {
         return (
-            <div>
+            <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
               <div className="container">
                   <div className="row">
                       <div className="card col-md-6 offset-md-3 offset-md-3">

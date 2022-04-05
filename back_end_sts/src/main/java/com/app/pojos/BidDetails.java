@@ -33,11 +33,11 @@ import lombok.NoArgsConstructor;
 public class BidDetails extends BaseEntity{
 
 	@ManyToOne(cascade =CascadeType.MERGE)
-	@JoinColumn(name = "scrap_id",nullable = false)
+	@JoinColumn(name = "scrap_id")
 	private ScrapPost scrappost;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "user_id",nullable = false)
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@Column

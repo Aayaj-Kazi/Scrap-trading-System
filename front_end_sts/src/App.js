@@ -1,23 +1,25 @@
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ListScrapPostComponent from './Component/ListScrapPostComponent';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import AddScrapPostComponent from './Component/AddScrapPostComponent';
-import AddBidComponent from './Component/AddBidComponent';
-
-import SignIn from './Component/SignIn/SignIn';
-import UserContext from './Session/Session';
 import { useState } from 'react';
 
-import AddUserComponent from './Component/AddUserComponent';
-import ReportComponent from './Component/ReportComponent';
+import SignIn from './Component/SignIn/SignIn';
+import AddUserComponent from './Component/UserComponent/AddUserComponent';
+import ListScrapPostComponent from './Component/UserComponent/ListScrapPostComponent';
+import AddScrapPostComponent from './Component/UserComponent/AddScrapPostComponent';
+import AddBidComponent from './Component/UserComponent/AddBidComponent';
+import ReportComponent from './Component/UserComponent/ReportComponent';
+import FeedbackComponent from './Component/UserComponent/FeedbackComponent';
+
 import AdminHomeComponent from './Component/AdminComponent/AdminHomeComponent';
 import AdminScrapPostComponent from './Component/AdminComponent/AdminScrapPostComponent';
 import AdminUserComponent from './Component/AdminComponent/AdminUserComponent';
 import AdminReportComponent from './Component/AdminComponent/AdminReportComponent';
-import AdminfeedbackComponent from './Component/AdminComponent/AdminFeedbackComponent';
-import FeedbackComponent from './Component/FeedbackComponent';
+import AdminFeedbackComponent from './Component/AdminComponent/AdminFeedbackComponent';
+import UserContext from './Session/Session';
+import LogoutComponent from './Component/UserComponent/LogoutComponent';
+
 
 function App() {
   const [value, setValue] = useState('')
@@ -33,6 +35,7 @@ function App() {
               <Route path='/' exact component={SignIn}></Route>
               <Route path='/register' exact component={AddUserComponent}></Route>
               <Route path='/login' exact component={SignIn}></Route>
+              <Route path='/logout' exact component={LogoutComponent}></Route>
               
               <Route path='/viewScrapPost'  component={ListScrapPostComponent}></Route>
               <Route path='/addScrapPost' component={AddScrapPostComponent}></Route>
@@ -43,7 +46,7 @@ function App() {
               <Route path='/AdmingetAllScrappost'  component={AdminScrapPostComponent}></Route>
               <Route path='/AdmingetAllUsers'  component={AdminUserComponent}></Route>
               <Route path='/AdmingetAllReport'  component={AdminReportComponent}></Route>
-              <Route path='/AdmingetAllFeedback'  component={AdminfeedbackComponent}></Route>
+              <Route path='/AdmingetAllFeedback'  component={AdminFeedbackComponent}></Route>
               
               
               </UserContext.Provider> 
