@@ -24,8 +24,8 @@ class AddBidComponent extends Component {
 
        // const history = useHistory()
        this.state.id= localStorage.getItem('scrapId')
-       ScrapPostService.getScrapPostById(this.state.id).then((res) => {
-        this.setState({scrappost: res.data});
+       ScrapPostService.getScrapPostById(this.state.id).then((resp) => {
+        this.setState({scrappost: resp.data});
         console.log(JSON.stringify(this.state.scrappost))
         //console.log(JSON.stringify(resp.data));
      
@@ -88,16 +88,16 @@ class AddBidComponent extends Component {
                  </thead>
 
                  <tbody>
-                     {                        
+                     {      
+                                         
                          (                                                     
-                             <tr key= {this.state.scrappost.id}>
+                             <tr key={this.state.scrappost.id}>
                                   {/* <td key={this.state.scrappost.user.id}>{this.state.scrappost.user.fullname}</td>  */}
                                  <td>{this.state.scrappost.city}</td>
                                  <td>{this.state.scrappost.weight}</td>
                                  <td>{this.state.scrappost.materialType}</td>
                                  <td>{this.state.scrappost.uploadingDate}</td>
                                  <td>{this.state.scrappost.scrapImage}</td>
-                    
                              </tr>
                          )
                      }

@@ -102,6 +102,16 @@ public class UserServiceImpl implements UserService {
 		return scrapRepo.findById(Id);
 	}
 
+	@Override
+	public Optional<ScrapPost> findByUser(int user_id) {
+		
+		return scrapRepo.findById(user_id);
+	}
+
+	
+
+
+	
 	
 
 	

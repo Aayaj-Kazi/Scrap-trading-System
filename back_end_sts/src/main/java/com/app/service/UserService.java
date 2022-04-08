@@ -36,4 +36,7 @@ public interface UserService {
 	User authenticateUser(String username, String password);
 	
 	Optional<ScrapPost> findById(Integer Id);
+	
+	
+	Optional<ScrapPost> findByUser(int user_id);
 }

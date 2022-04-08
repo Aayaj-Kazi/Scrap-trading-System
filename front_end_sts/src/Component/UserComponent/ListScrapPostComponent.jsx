@@ -15,7 +15,8 @@ class ListScrapPostComponent extends Component {
        // this.deleteScrapPost = this.deleteScrapPost.bind(this);
         this.addBid = this.addBid.bind(this);
         this.loginpage=this.loginpage.bind(this);
-        this.giveFeedback=this.giveFeedback.bind(this)
+        this.giveFeedback=this.giveFeedback.bind(this);
+        this.getScarpPostByUserId=this.getScarpPostByUserId.bind(this)
     }
 
    
@@ -35,6 +36,11 @@ class ListScrapPostComponent extends Component {
     loginpage(){
        
         this.props.history.push('/loginpage');
+    }
+
+    getScarpPostByUserId(id){
+        localStorage.setItem('userId',this.state.user.id)
+        this.props.history.push('/myScrapPost');
     }
 
     addScrapPost(){
@@ -57,6 +63,7 @@ class ListScrapPostComponent extends Component {
     render() {
         return (
             <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
+            <button className="btn btn-success align-right" onClick={this.getScarpPostByUserId}>myScrapPost</button><br></br>
                 <h3>Welcome,  {this.state.user.fullname}</h3>
              <h2 className="text-center">Scrap Posts</h2>
              <div className="row">
@@ -90,6 +97,7 @@ class ListScrapPostComponent extends Component {
                                  <td><img src={scrap.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
                                  <td><button className="btn btn-primary"  onClick={ () => this.addBid(scrap.id)}>Bid</button></td>
                              </tr>
+                             
                          )
                      }
                  </tbody>

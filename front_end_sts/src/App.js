@@ -19,6 +19,7 @@ import AdminReportComponent from './Component/AdminComponent/AdminReportComponen
 import AdminFeedbackComponent from './Component/AdminComponent/AdminFeedbackComponent';
 import UserContext from './Session/Session';
 import LogoutComponent from './Component/UserComponent/LogoutComponent';
+import GetScrapPostByUserComponent from './Component/UserComponent/GetScrapPostByUserComponent';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               <Route path='/viewScrapPost'  component={ListScrapPostComponent}></Route>
               <Route path='/addScrapPost' component={AddScrapPostComponent}></Route>
               <Route path='/addBid/:id' component={AddBidComponent}></Route>
+              <Route path='/myScrapPost' component={GetScrapPostByUserComponent}></Route>
               <Route path='/reportScrappost' component={ReportComponent}></Route>
               <Route path='/feedbackUser' component={FeedbackComponent}></Route>
               <Route path='/adminhome'  component={AdminHomeComponent}></Route>

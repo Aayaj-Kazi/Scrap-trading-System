@@ -1,15 +1,18 @@
 package com.app.dao;
 
 import java.time.LocalDate;
-import java.util.List;
 
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 
 import com.app.pojos.ScrapPost;
 import com.app.pojos.User;
+
 @Repository
 public interface ScrapRepository extends JpaRepository<ScrapPost, Integer> {
 
@@ -25,6 +28,9 @@ public interface ScrapRepository extends JpaRepository<ScrapPost, Integer> {
 		//find all scrapost by location/city
 		List<ScrapPost> findByCity(String city);
 		
-	
+		@Query("select s from ScrapPost s  where user_id= :user_id")
+		List<ScrapPost>  findByUser(User user_id);
+//	
+//		ScrapPost findByIdAndUserId(int scrap_id, int user_id);
 		}
 
