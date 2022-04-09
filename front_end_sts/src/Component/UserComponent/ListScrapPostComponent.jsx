@@ -95,7 +95,7 @@ class ListScrapPostComponent extends Component {
                                  <td>{scrap.materialType}</td>
                                  <td>{scrap.uploadingDate}</td>
                                  <td><img src={scrap.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
-                                 <td><button className="btn btn-primary"  onClick={ () => this.addBid(scrap.id)}>Bid</button></td>
+                                 <td><button className="btn btn-primary"  onClick={ () => this.addBid(scrap.id)}>View Details</button></td>
                              </tr>
                              
                          )

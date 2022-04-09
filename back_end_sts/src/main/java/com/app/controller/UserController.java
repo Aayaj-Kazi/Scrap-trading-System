@@ -121,33 +121,25 @@ public class UserController {
 	@GetMapping("/getScrapPostById/{scrap_id}")
 	public ResponseEntity<?> getScrapPostById(@PathVariable int scrap_id) {
 		System.out.println("In getScrapPostById()");
-		Optional<ScrapPost> post = userservice.findById(scrap_id);
-		return Response.success(post);
+
+		return new ResponseEntity<>(userservice.findById(scrap_id), HttpStatus.OK);
 	}
 
 	@GetMapping("/getScrapPostByUserId/{user_id}")
 	public ResponseEntity<?> getScrapPostByUserId(@PathVariable User user_id) {
 		System.out.println("In getScrapPostUserById()");
-		List<ScrapPost> post = scrapRepo.findByUser(user_id);
-		return Response.success(post);
+
+		return new ResponseEntity<>(scrapRepo.findByUser(user_id), HttpStatus.OK);
 	}
 
 	@GetMapping("/getBidDetailsByScrapId/{scrap_id}")
 	public ResponseEntity<?> getBidDetailsByScrapId(@PathVariable ScrapPost scrap_id) {
 		System.out.println("In getBidDetailsByScrapId()");
-		List<BidDetails> post = bidRepo.findByScrapPost(scrap_id);
-		return Response.success(post);
+
+		return new ResponseEntity<>(bidRepo.findByScrapPost(scrap_id), HttpStatus.OK);
 	}
 	
-//	@GetMapping("/postByUser/{id}")
-//	public List<ScrapPost> postByUser(@PathVariable int id) {
-//		Optional<User> userOptional = userRepo.findById(id);
-//		if (!userOptional.isPresent()) {
-//			throw new EntityNotFoundException("id: " + id);
-//		}
-//		return userOptional.get().getScrappost();
-//
-//	}
+
 
 	@GetMapping("/logout")
 	public String userLogout(HttpSession session, Model map, HttpServletRequest request, HttpServletResponse resp) {

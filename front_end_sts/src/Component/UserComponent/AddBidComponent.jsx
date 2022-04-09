@@ -7,10 +7,10 @@ class AddBidComponent extends Component {
 
     constructor(props){
         super(props)
-
-        this.state ={
+        
+        this.state = {
             user:[],
-            scrappost:[],
+        scrappost: {},
             bidAmt:''
         }
         this.addBidhandler=this.addBidhandler.bind(this)
@@ -22,15 +22,15 @@ class AddBidComponent extends Component {
           this.setState({user: res.data});
       });
 
-       // const history = useHistory()
+       //const history = useHistory()
        this.state.id= localStorage.getItem('scrapId')
        ScrapPostService.getScrapPostById(this.state.id).then((resp) => {
-        this.setState({scrappost: resp.data});
-        console.log(JSON.stringify(this.state.scrappost))
+        this.setState({scrappost: resp.data})
+
+     // console.log(JSON.stringify(this.state.scrappost))
         //console.log(JSON.stringify(resp.data));
-     
-      
-        });
+             
+       });
     }
 
 
@@ -49,7 +49,7 @@ class AddBidComponent extends Component {
       addBid = (e) => {e.preventDefault();
         let bidDetails = {
             bidAmt: this.state.bidAmt,
-            scrappost: this.state.scrappost.data,
+            scrappost: this.state.scrappost,
             user: this.state.user,
             
     
@@ -71,7 +71,7 @@ class AddBidComponent extends Component {
         return (
             <div><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
             <h3>{this.state.user.fullname}</h3>
-            <h6>{this.state.scrappost.city}</h6>
+           
              <h2 className="text-center">Add Bid</h2>
              
              <div className="row">
@@ -88,19 +88,16 @@ class AddBidComponent extends Component {
                  </thead>
 
                  <tbody>
-                     {      
-                                         
-                         (                                                     
-                             <tr key={this.state.scrappost.id}>
-                                  {/* <td key={this.state.scrappost.user.id}>{this.state.scrappost.user.fullname}</td>  */}
-                                 <td>{this.state.scrappost.city}</td>
+                       <tr key={this.state.scrappost.id}>
+              {//  <td key={this.state.scrappost.user}>{this.state.scrappost.user.fullname}</td>  
+              }
+        <td>{this.state.scrappost.city}</td>
                                  <td>{this.state.scrappost.weight}</td>
                                  <td>{this.state.scrappost.materialType}</td>
                                  <td>{this.state.scrappost.uploadingDate}</td>
-                                 <td>{this.state.scrappost.scrapImage}</td>
-                             </tr>
-                         )
-                     }
+                                 <td><img src={this.state.scrappost.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
+                                 </tr>
+                      
                  </tbody>
                  </table>  
 <div>

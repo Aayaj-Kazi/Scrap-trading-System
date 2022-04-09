@@ -11,11 +11,14 @@ const SEND_REPORT_URL = "http://localhost:9090/api/user/sendReport";
 const SEND_FEEDBACK_URL = "http://localhost:9090/api/user/sendFeedback";
 const GET_USERbyUSERNAME_URL = "http://localhost:9090/api/user/findByUsername";
 const SCRAP_BY_USER_ID_URL = "http://localhost:9090/api/user/getScrapPostByUserId";
-
+const BIDS_BY_SCRAP_ID_URL = "http://localhost:9090/api/user/getBidDetailsByScrapId";
 
 
 class ScrapPostService {
 
+    getBidDetailsByScrapPost(id){
+        return axios.get(BIDS_BY_SCRAP_ID_URL+'/'+id)
+    }
 
     getScarpPostByUserId(id){
         return axios.get(SCRAP_BY_USER_ID_URL+'/'+id)
