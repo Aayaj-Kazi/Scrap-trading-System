@@ -102,9 +102,10 @@ class ListScrapPostComponent extends Component {
                      }
                  </tbody>
                  </table>    
- {/* <div className="row"> <button className="btn btn-primary" onClick={this.loginpage}>Login</button></div>  
- <td><button className="btn btn-primary"  onClick={ () => this.deleteScrapPost(scrap.id)}>Delete</button></td>
-*/}<div className="row">
+
+
+
+ <div className="row">
 <button className="btn btn-primary"  onClick={this.giveFeedback}>Give Feedback</button>
 </div>
              </div>  
