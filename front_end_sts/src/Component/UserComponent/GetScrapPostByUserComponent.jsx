@@ -40,8 +40,8 @@ this.state = {
    
  <div className="row">
  
-<table className="table table-striped table-bordered">
-                 <thead>
+<table className="table table-striped table-bordered" style={{ "width": "700px" }} >
+                 {/* <thead>
                      <tr>  
                          <th>Uploading Date</th>
                             <th>city</th>
@@ -50,21 +50,35 @@ this.state = {
                         <th>Scrap Image</th>
                          <th>Action</th>
                      </tr>
-                 </thead>
+                 </thead> */}
 
                  <tbody>
                  {
                          this.state.scrappost.map(
                              scrap =>
-                             
-                             <tr key={scrap.id}>
-                                  <td>{scrap.uploadingDate}</td>
-                                 <td>{scrap.city}</td>
-                                 <td>{scrap.weight}</td>
-                                 <td>{scrap.materialType}</td>
-                                <td><img src={scrap.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
-                                 <td><button className="btn btn-primary"  onClick={ () => this.viewBid(scrap.id)}>Get all Bids</button></td>
-                             </tr>
+                             <tr key={scrap.id} >
+                        <td>
+                            <div class="card mb-3">
+                                <img src={scrap.scrapImage} class="card-img-top" alt="Scrap Image" width={150} height={400} />
+                                <div class="card-body">
+                                    {/* <h5 class="card-title">{scrap.user.fullname}</h5> */}
+                                    <p class="card-text">City : {scrap.city}<br></br>
+                                        Scrap Weight : {scrap.weight}<br></br>
+                                        Discription : {scrap.materialType}</p>
+                                    <div ><button className="btn btn-primary align-right" onClick={() => this.viewBid(scrap.id)}>Get all Bids</button></div>
+                                    <p class="card-text"><small class="text-muted">posted on - {scrap.uploadingDate}</small></p>
+                                </div>
+                            </div>
+                            </td>
+                    </tr>
+                            //  <tr key={scrap.id}>
+                            //       <td>{scrap.uploadingDate}</td>
+                            //      <td>{scrap.city}</td>
+                            //      <td>{scrap.weight}</td>
+                            //      <td>{scrap.materialType}</td>
+                            //     <td><img src={scrap.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
+                            //      <td><button className="btn btn-primary"  onClick={ () => this.viewBid(scrap.id)}>Get all Bids</button></td>
+                            //  </tr>
                              
                          )
                      }
@@ -80,3 +94,5 @@ this.state = {
     )
   }
 }
+
+

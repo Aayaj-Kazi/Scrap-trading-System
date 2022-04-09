@@ -44,35 +44,42 @@ s
              <div className="row">
              <table className="table table-striped table-bordered">
              
-                 <thead>
-                     <tr>
-                     <th>User ID</th>
-                         <th> Name</th>
-                         <th> Email</th>
-                         <th> ContactNo</th>
-                         <th> Address </th>
-                         <th> Username</th>
-                         <th>Action</th>
-                         
-                     </tr>
-                 </thead>
+    
 
                  <tbody>
                      {
-                         this.state.users.map(
-                             user =>
-                             
-                             <tr key={user.id}>
-                                <td>{user.id}</td>
-                                 <td >{user.fullname}</td>
-                                 <td>{user.email}</td>
-                                 <td>{user.contactNo}</td>
-                                 <td>{user.address}</td>
-                                 <td>{user.username}</td>
-                
-                                 <td><button className="btn btn-primary"  onClick={ () => this.deleteUser(user.id)}>Delete User</button></td>
+                        this.state.users.map(
+                            user =>
+                        <tr key={user.id} >
+                        <td>
+                            <div class="card mb-3">
                                 
-                             </tr>
+                                <div class="card-body">
+                                    
+                                    <p class="card-text">user id : {user.id}<br></br>
+                                    full name : {user.fullname}<br></br>
+                                        email : {user.email}<br></br>
+                                        contact No. : {user.contactNo}<br></br>
+                                        address : {user.address}<br></br>
+                                        username: {user.username}  </p>
+                                    <div ><button className="btn btn-primary"  onClick={ () => this.deleteUser(user.id)}>Delete User</button></div>
+                                    
+                                </div>
+                            </div></td>
+                    </tr>
+                        
+                             
+                            //  <tr key={user.id}>
+                            //     <td>{user.id}</td>
+                            //      <td >{user.fullname}</td>
+                            //      <td>{user.email}</td>
+                            //      <td>{user.contactNo}</td>
+                            //      <td>{user.address}</td>
+                            //      <td>{user.username}</td>
+                
+                            //      <td><button className="btn btn-primary"  onClick={ () => this.deleteUser(user.id)}>Delete User</button></td>
+                                
+                            //  </tr>
                          )
                      }
                  </tbody>
@@ -82,3 +89,17 @@ s
         );
     }
 }
+{/* <tr key={scrap.id} >
+<td>
+<div class="card mb-3">
+    <img src={scrap.scrapImage} class="card-img-top" alt="Scrap Image" width={150} height={400} />
+    <div class="card-body">
+        <h5 class="card-title">{scrap.user.fullname}</h5>
+        <p class="card-text">City : {scrap.city}<br></br>
+            Scrap Weight : {scrap.weight}<br></br>
+            Discription : {scrap.materialType}</p>
+        <div ><button className="btn btn-primary align-right" onClick={() => this.addBid(scrap.id)}>Details</button></div>
+        <p class="card-text"><small class="text-muted">posted on - {scrap.uploadingDate}</small></p>
+    </div>
+</div></td>
+</tr> */}

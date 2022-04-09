@@ -76,47 +76,34 @@ class AddBidComponent extends Component {
              
              <div className="row">
              <table className="table table-striped table-bordered">
-                 <thead>
-                     <tr>
-                         <th>seller Name</th>
-                         <th>city</th>
-                         <th>weight</th>
-                         <th>Material Type</th>
-                         <th>Uploading Date</th>
-                         <th>Scrap Image</th>
-                     </tr>
-                 </thead>
+             <tbody>
+                 <tr key={this.state.scrappost.id} >
+                <td>
+                <div class="card mb-3">
+                    <img src={this.state.scrappost.scrapImage} class="card-img-top" alt="Scrap Image" width={150} height={400} />
+                    <div class="card-body">
+                        {/* <h5 class="card-title">{scrap.user.fullname}</h5> */}
+                        <p class="card-text">City : {this.state.scrappost.city}<br></br>
+                            Scrap Weight : {this.state.scrappost.weight}<br></br>
+                            Discription : {this.state.scrappost.materialType}<br></br>
+                            Enter Bid Amount: <input type='text' name='addbid' value={this.state.bidAmt} onChange={this.addBidhandler} placeholder='Enter Amount' />
+                            </p>
+                        
+                        <p class="card-text"><small class="text-muted">posted on - {this.state.scrappost.uploadingDate}</small></p>
+                        <div ><button className="btn btn-primary align-right" onClick={this.addBid}>Bid on ScrapPost</button></div>
+                    </div>
+                    <div ><button className="btn btn-primary align-right" onClick={this.report}>Report ScrapPost</button></div>
+                </div>
+                </td>
+        </tr>
+        </tbody>        
 
-                 <tbody>
-                       <tr key={this.state.scrappost.id}>
-              {//  <td key={this.state.scrappost.user}>{this.state.scrappost.user.fullname}</td>  
-              }
-        <td>{this.state.scrappost.city}</td>
-                                 <td>{this.state.scrappost.weight}</td>
-                                 <td>{this.state.scrappost.materialType}</td>
-                                 <td>{this.state.scrappost.uploadingDate}</td>
-                                 <td><img src={this.state.scrappost.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
-                                 </tr>
-                      
-                 </tbody>
+                 
                  </table>  
-<div>
-<table><tbody>
-    <tr>
-        <td>
-            Enter Bidding Amount
-        </td>
-        <td>
-            <input type='text' name='addbid' value={this.state.bidAmt} onChange={this.addBidhandler} placeholder='Enter Amount' />
-        </td>
-    </tr>
-   </tbody>
-</table>
-</div>
 
 
-                 <button className="btn btn-success" onClick={this.addBid}>Bid on ScrapPost</button>
-                 <button className="btn btn-success" onClick={this.report}>Report ScrapPost</button>
+
+                 
              </div>  
             </div>
         );
