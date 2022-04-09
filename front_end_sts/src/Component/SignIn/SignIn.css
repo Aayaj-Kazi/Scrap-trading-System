@@ -81,7 +81,7 @@
 
 body{
   background: rgb(34,193,195);
-  background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgb(246, 244, 241) 100%);
+  background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
   font-family: "work sans";
 }
 
@@ -161,8 +161,8 @@ html{
   font-size: 1.3rem;
   color: white;
   font-weight: 700;
-  background: rgb(34,193,195);
-  background: linear-gradient(90deg, rgb(111, 199, 206) 0%,     rgb(45, 111, 253) 100%);
+  background: rgb(194, 222, 81);
+  background: linear-gradient(90deg, rgb(12, 12, 12) 0%,     rgba(253,187,45,1) 100%);
   border: 0px;
   cursor: pointer;
   transition: opacity 0.25s ease-out;
