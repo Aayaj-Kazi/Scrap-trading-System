@@ -13,7 +13,8 @@ class AddBidComponent extends Component {
         scrappost: {},
             bidAmt:''
         }
-        this.addBidhandler=this.addBidhandler.bind(this)
+        this.addBidhandler=this.addBidhandler.bind(this);
+        this.report=this.report.bind(this)
     }
 
     componentDidMount (){
@@ -42,6 +43,7 @@ class AddBidComponent extends Component {
 
       addBidhandler =(event) => {this.setState(
         {bidAmt:event.target.value} 
+
       )};
 
 
@@ -75,21 +77,21 @@ class AddBidComponent extends Component {
              <h2 className="text-center">Add Bid</h2>
              
              <div className="row">
-             <table className="table table-striped table-bordered">
+             <table className="table table-striped table-bordered" style={{ "width": "700px" }}>
              <tbody>
                  <tr key={this.state.scrappost.id} >
                 <td>
-                <div class="card mb-3">
-                    <img src={this.state.scrappost.scrapImage} class="card-img-top" alt="Scrap Image" width={150} height={400} />
-                    <div class="card-body">
+                <div className="card mb-3">
+                    <img src={this.state.scrappost.scrapImage} className="card-img-top" alt="Scrap Image" width={150} height={400} />
+                    <div className="card-body">
                         {/* <h5 class="card-title">{scrap.user.fullname}</h5> */}
-                        <p class="card-text">City : {this.state.scrappost.city}<br></br>
+                        <p className="card-text">City : {this.state.scrappost.city}<br></br>
                             Scrap Weight : {this.state.scrappost.weight}<br></br>
                             Discription : {this.state.scrappost.materialType}<br></br>
                             Enter Bid Amount: <input type='text' name='addbid' value={this.state.bidAmt} onChange={this.addBidhandler} placeholder='Enter Amount' />
                             </p>
                         
-                        <p class="card-text"><small class="text-muted">posted on - {this.state.scrappost.uploadingDate}</small></p>
+                        <p className="card-text"><small class="text-muted">posted on - {this.state.scrappost.uploadingDate}</small></p>
                         <div ><button className="btn btn-primary align-right" onClick={this.addBid}>Bid on ScrapPost</button></div>
                     </div>
                     <div ><button className="btn btn-primary align-right" onClick={this.report}>Report ScrapPost</button></div>

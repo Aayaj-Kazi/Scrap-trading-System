@@ -71,15 +71,7 @@ this.state = {
                             </div>
                             </td>
                     </tr>
-                            //  <tr key={scrap.id}>
-                            //       <td>{scrap.uploadingDate}</td>
-                            //      <td>{scrap.city}</td>
-                            //      <td>{scrap.weight}</td>
-                            //      <td>{scrap.materialType}</td>
-                            //     <td><img src={scrap.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
-                            //      <td><button className="btn btn-primary"  onClick={ () => this.viewBid(scrap.id)}>Get all Bids</button></td>
-                            //  </tr>
-                             
+                           
                          )
                      }
                  </tbody>

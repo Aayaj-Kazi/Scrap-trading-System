@@ -6,6 +6,7 @@ export default class ReportComponent extends Component {
         super(props)
         
     this.state = {
+      user :[],
         value: ''
       };
   

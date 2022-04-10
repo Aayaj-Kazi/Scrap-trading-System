@@ -94,7 +94,7 @@ class AddScrapPostComponent extends Component {
                                       <input placeholder='city' name='city' className='form-control' value={this.state.city} onChange={this.changeCityHandler}></input>
                                       <label>Weight</label>
                                       <input placeholder='weight' name='weight' className='form-control' value={this.state.weight} onChange={this.changeWeightHandler}></input>
-                                      <label>Material Type</label>
+                                      <label>Discription</label>
                                       <input placeholder='materialType' name='materialType' className='form-control' value={this.state.materialType} onChange={this.changeMaterialHandler}></input>
                                       <label>Uploading Date</label>
                                       <input placeholder='uploadingDate' name='uploadingDate' className='form-control' value={this.state.uploadingDate} onChange={this.changeDateHandler}></input>

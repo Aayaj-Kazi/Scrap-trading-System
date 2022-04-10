@@ -22,7 +22,7 @@ export default class ViewAllBidsComponent extends Component {
       this.state.id=localStorage.getItem('scrapId')
         ScrapPostService.getBidDetailsByScrapPost(this.state.id).then((resp) => {
             this.setState({bidDetails: resp.data});
-            console.log(JSON.stringify(this.state.bidDetails))
+            //console.log(JSON.stringify(this.state.bidDetails))
               //console.log(JSON.stringify(resp.data));
         });
 
@@ -30,7 +30,7 @@ export default class ViewAllBidsComponent extends Component {
   render() {
     return (
         <>
-      <div>ViewAllBidsComponent     {this.state.user.fullname}</div>
+      <div>{this.state.user.fullname}</div>
       <div className="row">
 <table className="table table-striped table-bordered">
                  <thead>

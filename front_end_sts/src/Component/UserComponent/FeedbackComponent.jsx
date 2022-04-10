@@ -52,6 +52,7 @@ description:'',
     return (
         <form ><button className="btn btn-success" onClick={this.logout}>Log Out </button><br></br>
           <h3>{this.state.user.fullname}</h3>
+          
           <label>
            Desciption :
             <textarea value={this.state.description} onChange={this.handleChange}/>

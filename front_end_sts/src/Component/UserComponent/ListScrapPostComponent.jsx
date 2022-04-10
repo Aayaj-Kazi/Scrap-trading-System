@@ -82,15 +82,15 @@ class ListScrapPostComponent extends Component {
                                 scrap =>
                                     <tr key={scrap.id} >
                                         <td>
-                                            <div class="card mb-3">
-                                                <img src={scrap.scrapImage} class="card-img-top" alt="Scrap Image" width={150} height={400} />
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{scrap.user.fullname}</h5>
-                                                    <p class="card-text">City : {scrap.city}<br></br>
+                                            <div className="card mb-3">
+                                                <img src={scrap.scrapImage} className="card-img-top" alt="Scrap Image" width={150} height={400} />
+                                                <div className="card-body">
+                                                    <h5 className="card-title">{scrap.user.fullname}</h5>
+                                                    <p className="card-text">City : {scrap.city}<br></br>
                                                         Scrap Weight : {scrap.weight}<br></br>
                                                         Discription : {scrap.materialType}</p>
                                                     <div ><button className="btn btn-primary align-right" onClick={() => this.addBid(scrap.id)}>Details</button></div>
-                                                    <p class="card-text"><small class="text-muted">posted on - {scrap.uploadingDate}</small></p>
+                                                    <p className="card-text"><small className="text-muted">posted on - {scrap.uploadingDate}</small></p>
                                                 </div>
                                             </div></td>
                                     </tr>
@@ -110,45 +110,4 @@ class ListScrapPostComponent extends Component {
 export default ListScrapPostComponent;
 
 
-{/*  <thead>
-                     <tr>
-                         <th>seller Name</th>
-                         <th>city</th>
-                         <th>weight</th>
-                         <th>Material Type</th>
-                         <th>Uploading Date</th>
-                         <th>Scrap Image</th>
-                         <th>Bidding</th>
-                     </tr>
-                 </thead>
 
-                 <tbody>
-                     {
-                         this.state.scrappost.map(
-                             scrap =>
-                             
-                             <tr key={scrap.id}>
-                                 <td key={scrap.user.id}>{scrap.user.fullname}</td>
-                                 <td>{scrap.city}</td>
-                                 <td>{scrap.weight}</td>
-                                 <td>{scrap.materialType}</td>
-                                 <td>{scrap.uploadingDate}</td>
-                                 <td><img src={scrap.scrapImage} alt="Scrap Image" width={150} height={150} /></td>
-                                 <td><button className="btn btn-primary"  onClick={ () => this.addBid(scrap.id)}>View Details</button></td>
-                             </tr>
-                             
-                         )
-                     }
-                 </tbody>
-
-
-                 <td> <div className="card" style={{"width": "400px"}} >
-    <img src={scrap.scrapImage} className="card-img" alt="Scrap Image"/>
-    <div className="card-body">
-      <h5 className="card-title">{scrap.user.fullname}</h5>
-      <p className="card-text">{scrap.city}<br></br>
-      {scrap.weight}<br></br>
-      {scrap.materialType}</p>
-      <button className="btn btn-primary"  onClick={ () => this.addBid(scrap.id)}>Details</button>
-    </div> </div> </td>
-                    */}

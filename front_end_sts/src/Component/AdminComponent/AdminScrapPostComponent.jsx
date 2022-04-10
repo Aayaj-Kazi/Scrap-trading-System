@@ -44,41 +44,32 @@ export default class AdminScrapPostComponent extends Component {
              <h2 className="text-center">Scrap Posts</h2>
              
              <div className="row">
-             <table className="table table-striped table-bordered">
-                 <thead>
-                     <tr>
-                         <th>seller Name</th>
-                         <th>city</th>
-                         <th>weight</th>
-                         <th>Material Type</th>
-                         <th>Uploading Date</th>
-                         <th>Scrap Image</th>
-                         <th>Action</th>
-                         
-                     </tr>
-                 </thead>
+                    <table className="table table-striped table-bordered " style={{ "width": "700px" }}>
 
-                 <tbody>
-                     {
-                         this.state.scrappost.map(
-                             scrap =>
-                             
-                             <tr key={scrap.id}>
-                                 <td key={scrap.user.id}>{scrap.user.fullname}</td>
-                                 <td>{scrap.city}</td>
-                                 <td>{scrap.weight}</td>
-                                 <td>{scrap.materialType}</td>
-                                 <td>{scrap.uploadingDate}</td>
-                                 <td>{scrap.scrapImage}</td>
-                                 <td><button className="btn btn-primary"  onClick={ () => this.deleteScrapPost(scrap.id)}>Delete</button></td>
-                                
-                             </tr>
-                         )
-                     }
-                 </tbody>
-                 </table>    
+                        <tbody>
+                            {this.state.scrappost.map(
+                                scrap =>
+                                    <tr key={scrap.id} >
+                                        <td>
+                                            <div class="card mb-3">
+                                                <img src={scrap.scrapImage} class="card-img-top" alt="Scrap Image" width={150} height={400} />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{scrap.user.fullname}</h5>
+                                                    <p class="card-text">City : {scrap.city}<br></br>
+                                                        Scrap Weight : {scrap.weight}<br></br>
+                                                        Discription : {scrap.materialType}</p>
+                                                    <div ></div><button className="btn btn-primary"  onClick={ () => this.deleteScrapPost(scrap.id)}>Delete</button>
+                                                    </div>
+                                                    <p class="card-text"><small class="text-muted">posted on - {scrap.uploadingDate}</small></p>
+                                                </div>
+                                            </td>
+                                    </tr>
+                            )}
+                        </tbody>
+                    </table>
+
                  </div>  
-            </div>
+                 </div>          
         );
     }
   }
