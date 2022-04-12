@@ -23,8 +23,8 @@ insert into report (description,user_id) values('Prajakta is froud. give me my m
 
 
 TO INSERT SCRAP_POST:
-insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Raipur','Plastic and Metal','url:image.url',curdate(),12.50,2);
-insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Kharadi,Pune','Papers','url:image2.url',curdate(),2.50,2);
-insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Tembhurni','old scooty','url:image3.url',curdate(),85,3);
-insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Parbhani','non-working oven','url:image4.url',curdate(),10,4);
-insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Pune','old TV','url:image5.url',curdate(),5,5);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Raipur','Plastic and Metal','https://media.gettyimages.com/photos/scrap-metal-pieces-laying-in-a-pile-picture-id133993685?s=612x612',curdate(),12.50,2);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Kharadi,Pune','Papers','https://5.imimg.com/data5/DH/SR/MY-10212518/waste-newspaper-500x500.jpg',curdate(),2.50,2);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Tembhurni','old scooty','https://apollo-singapore.akamaized.net/v1/files/t77ywu53erxu-IN/image;s=850x0 ',curdate(),85,3);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Parbhani','non-working oven',' https://media.karousell.com/media/photos/products/2021/7/31/scrapjunk_us_tradition_oven_1627715211_81257b30_progressive.jpg',curdate(),10,4);
+insert into scrap_post (city,material_type,scrap_image,uploading_date,weight,user_id) values ('Pune','https://i.pinimg.com/originals/8d/d3/58/8dd35815a98e95d794b348dd9c272202.jpg',curdate(),5,5);
