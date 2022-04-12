@@ -83,7 +83,7 @@ export default class AddUserComponent extends Component {
                                   <form>
                                       <div className="form-group">
                                           <label>FullName</label>
-                                          <input placeholder='fullname' name='fullname' className='form-control' value={this.state.fullname} onChange={this.changeFullnameHandler}></input>
+                                          <input placeholder='fullname' name='fullname' className='form-control' value={this.state.fullname} onChange={this.changeFullnameHandler} required></input>
                                           <label>Email</label>
                                           <input placeholder='email' name='email' className='form-control' value={this.state.email} onChange={this.changeEmailHandler}></input>
                                           <label>Contact No.</label>
