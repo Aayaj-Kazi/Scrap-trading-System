@@ -64,14 +64,18 @@ public class User extends BaseEntity{
 //	private Login login;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user",orphanRemoval = true)
 	private List<ScrapPost> scrappost;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user",orphanRemoval = true)
 	private List<Feedback> feedback;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user",orphanRemoval = true)
 	private List<Report> report;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user",orphanRemoval = true)
+	private List<BidDetails> bidDetails;
 }

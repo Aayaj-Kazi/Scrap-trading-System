@@ -60,7 +60,7 @@ public class ScrapPost extends BaseEntity{
 	private String scrapImage;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "scrappost")
+	@OneToMany(mappedBy = "scrappost",orphanRemoval = true)
 	private List<BidDetails> bidDetails;
 	
 //	@ManyToOne(cascade = CascadeType.ALL)
