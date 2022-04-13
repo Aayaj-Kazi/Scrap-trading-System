@@ -27,6 +27,11 @@ this.state = {
           
         });
     }
+    deleteScrapPost(id){
+        ScrapPostService.deleteScrapPost(id).then( res => {
+            this.setState({scrappost: this.state.scrappost.filter(scrappost => scrappost.id!==id)});
+        })
+    }
 
     viewBid(id){
         localStorage.setItem('scrapId',id)
@@ -66,6 +71,8 @@ this.state = {
                                         Scrap Weight : {scrap.weight}<br></br>
                                         Discription : {scrap.materialType}</p>
                                     <div ><button className="btn btn-primary align-right" onClick={() => this.viewBid(scrap.id)}>Get all Bids</button></div>
+                                    <div ><button className="btn btn-primary"  onClick={ () => this.deleteScrapPost(scrap.id)}>Delete</button>
+                                                    </div>
                                     <p class="card-text"><small class="text-muted">posted on - {scrap.uploadingDate}</small></p>
                                 </div>
                             </div>

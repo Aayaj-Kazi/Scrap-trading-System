@@ -37,6 +37,7 @@ export default class ViewAllBidsComponent extends Component {
                      <tr>  
                         
                         <th>User </th>
+                        <th>Mobile No.</th>
                          <th>bid Amount</th>
                      </tr>
                  </thead>
@@ -47,6 +48,7 @@ export default class ViewAllBidsComponent extends Component {
                              (bid) =>
                              <tr key={this.state.scrappost.id}>
                                <td>{bid.user.fullname}</td>
+                               <td>{bid.user.contactNo}</td>
                                 <td>{bid.bidAmt}</td>
                                  </tr>
                          )

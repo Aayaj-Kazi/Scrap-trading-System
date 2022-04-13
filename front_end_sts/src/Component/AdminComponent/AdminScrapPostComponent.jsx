@@ -11,7 +11,7 @@ export default class AdminScrapPostComponent extends Component {
             user:[]
         }
 
-        this.deleteScrapPost = this.deleteScrapPost
+        this.deleteScrapPost = this.deleteScrapPost.bind(this)
 
     }
     componentDidMount(){
