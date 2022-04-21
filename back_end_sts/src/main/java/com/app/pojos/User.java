@@ -58,7 +58,7 @@ public class User extends BaseEntity{
 	@Column(length =40 )
 	private String password;
 	
-		
+	//pojo changes	
 //	@OneToOne(cascade = CascadeType.ALL)     // to add login_id as foreign key in this table
 //	@JoinColumn(name = "loginId")
 //	private Login login;
